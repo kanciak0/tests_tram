@@ -1,0 +1,5 @@
+[serial]
+port = COM1
+baudrate = 115200
+timeout = 60
+password = PgeDgt2023#
