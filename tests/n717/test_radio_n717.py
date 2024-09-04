@@ -4,13 +4,14 @@ from common.Service import GSMService
 
 
 @pytest.fixture(scope='module')
-def gsm_service():
-    service = GSMService(config_file='../common/config_file.txt')
+def gsm_service(request):
+    config_file = request.config.getoption("--serial-config")
+    service = GSMService(config_file=config_file, test_file_name="log_test_radio_n717")
     yield service
     service.close()
 
 
-def test_set_auto_radio_mode(gsm_service):
+def test_set_auto_radio_mode_n717(gsm_service):
     print("Testing setting radio mode to auto...")
     expected_messages = ["LTE","EDGE","GPRS"]
     auto_conf_bands = 'GSM900,GSM1800,LTE2100,LTE1800,LTE900,LTE800,LTE450B31'
@@ -42,7 +43,7 @@ def test_set_auto_radio_mode(gsm_service):
     print("Test for setting radio mode to auto completed successfully.")
 
 
-def test_set_lte_radio_mode(gsm_service):
+def test_set_lte_radio_mode_n717(gsm_service):
     print("Testing setting radio mode to auto...")
     expected_messages = ["LTE", "EDGE", "GPRS"]
     lte_conf_bands = 'LTE2100,LTE1800,LTE900,LTE800,LTE450B31'
@@ -74,7 +75,7 @@ def test_set_lte_radio_mode(gsm_service):
     print("Test for setting radio mode to auto completed successfully.")
 
 
-def test_set_gsm_radio_mode(gsm_service):
+def test_set_gsm_radio_mode_n717(gsm_service):
     print("Testing setting radio mode to auto...")
     expected_messages = ["EDGE", "GPRS"]
     gsm_conf_bands = 'GSM900,GSM1800'
@@ -108,7 +109,7 @@ def test_set_gsm_radio_mode(gsm_service):
 #TODO: ASK ABOUT THESE TESTS, PREF_BANDS_CONF= NEVER ASSIGNING
 
 
-def test_set_pref_bands_to_lte(gsm_service):
+def test_set_pref_bands_to_lte_n717(gsm_service):
     print("Testing setting preferred bands to LTE...")
     lte_pref_bands = 'LTE2100,LTE1800'
     gsm_service.login_admin()
@@ -134,7 +135,7 @@ def test_set_pref_bands_to_lte(gsm_service):
     print("Test for setting preferred bands to LTE completed successfully.")
 
 
-def test_set_pref_bands_to_2g(gsm_service):
+def test_set_pref_bands_to_2g_n717(gsm_service):
     print("Testing setting preferred bands to LTE...")
     gsm_pref_bands = 'GSM900,GSM1800'
     gsm_service.login_admin()
@@ -160,7 +161,7 @@ def test_set_pref_bands_to_2g(gsm_service):
     print("Test for setting preferred bands to LTE completed successfully.")
 
 
-def test_tcp_port_change(gsm_service):
+def test_tcp_port_change_n717(gsm_service):
     tcp_port_value = '1234'
     print("Testing changing TCP port value...")
     gsm_service.login_admin()

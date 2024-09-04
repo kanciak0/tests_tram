@@ -9,7 +9,7 @@ def apn_service(request):
     Fixture to initialize and provide the SerialService instance for the tests.
     """
     config_file = request.config.getoption("--serial-config")
-    apn_service = APNService(config_file=config_file)
+    apn_service = APNService(config_file=config_file, test_file_name="log_test_apn_n717")
     yield apn_service
     apn_service.close()
 

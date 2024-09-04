@@ -1,0 +1,24 @@
+2024-09-04 11:45:51.706 - Received data: debug >
+debug >
+2024-09-04 11:45:51.706 - Buffer updated: debug >
+debug >
+2024-09-04 11:45:51.706 - Sending command: ip.iface
+
+2024-09-04 11:45:51.807 - Received data: ip.iface
+
+LCT: Local IP: 79.162.233.243
+LCT: Remote IP: 79.162.233.244
+LCT: Netmask: 255.255.255.248
+LCT: DNS1: 194.204.159.1
+LCT: DNS2: 194.204.152.34
+
+debug >
+2024-09-04 11:45:51.807 - Buffer updated: ip.iface
+
+LCT: Local IP: 79.162.233.243
+LCT: Remote IP: 79.162.233.244
+LCT: Netmask: 255.255.255.248
+LCT: DNS1: 194.204.159.1
+LCT: DNS2: 194.204.152.34
+
+debug >

@@ -1,0 +1,66 @@
+2024-09-04 12:06:09.968 - Received data: debug >
+debug >
+2024-09-04 12:06:09.968 - Buffer updated: debug >
+debug >
+2024-09-04 12:06:09.968 - Sending command: ip.iface
+
+2024-09-04 12:06:10.070 - Received data: ip.iface
+
+LCT: Local IP: 79.162.233.243
+LCT: Remote IP: 79.162.233.244
+LCT: Netmask: 255.255.255.248
+LCT: DNS1: 194.204.159.1
+LCT: DNS2: 194.204.152.34
+
+debug >
+2024-09-04 12:06:10.070 - Buffer updated: ip.iface
+
+LCT: Local IP: 79.162.233.243
+LCT: Remote IP: 79.162.233.244
+LCT: Netmask: 255.255.255.248
+LCT: DNS1: 194.204.159.1
+LCT: DNS2: 194.204.152.34
+
+debug >
+2024-09-04 12:06:10.089 - Received data: debug >
+debug >
+2024-09-04 12:06:10.089 - Buffer updated: debug >
+debug >
+2024-09-04 12:06:10.089 - Sending command: ip.state
+
+2024-09-04 12:06:10.190 - Received data: ip.state
+
+LCT: Uplink task: task_Running
+LCT: WAN link: connected
+
+debug >
+2024-09-04 12:06:10.190 - Buffer updated: ip.state
+
+LCT: Uplink task: task_Running
+LCT: WAN link: connected
+
+debug >
+2024-09-04 12:06:10.215 - Received data: debug >
+debug >
+2024-09-04 12:06:10.215 - Buffer updated: debug >
+debug >
+2024-09-04 12:06:10.216 - Sending command: ip.ping 8.8.8.8
+
+2024-09-04 12:06:10.317 - Received data: ip.ping 8.8.8.8
+
+PING: resolved: 8.8.8.8 -> 8.8.8.8
+2024-09-04 12:06:10.317 - Buffer updated: ip.ping 8.8.8.8
+
+PING: resolved: 8.8.8.8 -> 8.8.8.8
+2024-09-04 12:06:10.537 - Received data: PING: recv from 8.8.8.8: icmp_seq=0 time=259 ms ttl=6
+2024-09-04 12:06:10.537 - Buffer updated: PING: recv from 8.8.8.8: icmp_seq=0 time=259 ms ttl=6
+2024-09-04 12:06:11.561 - Received data: PING: recv from 8.8.8.8: icmp_seq=1 time=106 ms ttl=6
+2024-09-04 12:06:11.561 - Buffer updated: PING: recv from 8.8.8.8: icmp_seq=0 time=259 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=1 time=106 ms ttl=6
+2024-09-04 12:06:12.681 - Received data: PING: recv from 8.8.8.8: icmp_seq=2 time=105 ms ttl=6
+2024-09-04 12:06:12.681 - Buffer updated: PING: recv from 8.8.8.8: icmp_seq=0 time=259 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=1 time=106 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=2 time=105 ms ttl=6
+2024-09-04 12:06:13.785 - Received data: PING: recv from 8.8.8.8: icmp_seq=3 time=94 ms ttl=6
+2024-09-04 12:06:13.785 - Buffer updated: PING: recv from 8.8.8.8: icmp_seq=0 time=259 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=1 time=106 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=2 time=105 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=3 time=94 ms ttl=6
+2024-09-04 12:06:14.905 - Received data: PING: recv from 8.8.8.8: icmp_seq=4 time=99 ms ttl=6
+2024-09-04 12:06:14.905 - Buffer updated: PING: recv from 8.8.8.8: icmp_seq=0 time=259 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=1 time=106 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=2 time=105 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=3 time=94 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=4 time=99 ms ttl=6
+2024-09-04 12:06:15.930 - Received data: PING: Done
+2024-09-04 12:06:15.930 - Buffer updated: PING: recv from 8.8.8.8: icmp_seq=0 time=259 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=1 time=106 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=2 time=105 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=3 time=94 ms ttl=6PING: recv from 8.8.8.8: icmp_seq=4 time=99 ms ttl=6PING: Done

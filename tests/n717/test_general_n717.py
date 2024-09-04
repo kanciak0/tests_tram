@@ -9,7 +9,7 @@ def serial_service(request):
     Fixture to initialize and provide the SerialService instance for the tests.
     """
     config_file = request.config.getoption("--serial-config")
-    service = SerialService(config_file=config_file)
+    service = SerialService(config_file=config_file, test_file_name="log_test_general_n717")
     yield service
     service.close()
 
@@ -26,7 +26,7 @@ def test_ver_n717(serial_service):
     assert result, f"Expected version message '{expected_message}' was not received."
 
 
-def test_hwver_n717(config_manager, serial_service):
+def test_hwver_n717(serial_service):
     """
     Test to verify the hardware version information of the TRAM device.
     """

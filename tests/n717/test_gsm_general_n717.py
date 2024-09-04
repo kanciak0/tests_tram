@@ -6,11 +6,12 @@ from common.Service import GSMService
 
 
 @pytest.fixture(scope='module')
-def gsm_service():
+def gsm_service(request):
     """
     Fixture to initialize and provide the GSMService instance for the tests.
     """
-    service = GSMService(config_file='../../common/config_file.txt')
+    config_file = request.config.getoption("--serial-config")
+    service = GSMService(config_file=config_file,test_file_name="log_test_gsm_general_n717")
     yield service
     service.close()
 
@@ -30,7 +31,7 @@ def test_gsm_ver_n717(gsm_service):
     assert result, f"Expected GSM version message '{expected_message}' was not received."
 
 
-def test_gsm_ids_n717(config_manager, gsm_service):
+def test_gsm_ids_n717(gsm_service):
     """
     Test to verify the IMEI, IMSI, and SIM ID (ICCID) numbers.
     """
@@ -73,9 +74,11 @@ def test_gsm_band_n717(gsm_service):
         pin_check_command = 'print pin\n'
         pin_set_command = f'set pin {pin_value}\n'
         print(f"APN name is not set correctly, setting it to '{expected_apn_name}'")
-        gsm_service.write(f"set apn_name {expected_apn_name}")
+        gsm_service.write(f"set apn_name {expected_apn_name}\n")
         gsm_service.save()
         gsm_service.reset()
+        gsm_service.wait_for_message("Modul radiowy poprawnie wykryty")
+        gsm_service.login_admin()
         pin_pattern = r'pin=\s?\d{4}'
         gsm_service.write(pin_check_command)
         pin_output = gsm_service.read_console_output(line_count=5)
@@ -92,14 +95,11 @@ def test_gsm_band_n717(gsm_service):
             gsm_service.gsm_band()
             return True
 
-        # After setting APN and PIN, recheck the GSM band
-    result = gsm_service.wait_for_one_of_expected_messages(expected_messages,timeout=5)
-
     # Assert that one of the expected messages was received
     assert result, f"Expected one of the GSM/LTE band messages {expected_messages}'."
 
 
-def test_gsm_rssi_n717( gsm_service):
+def test_gsm_rssi_n717(gsm_service):
     """
     Test to verify the current signal strength (RSSI) and bit error rate (BER).
     """
@@ -147,7 +147,7 @@ def test_gsm_regstate_n717(gsm_service):
     assert result, f"Expected GSM registration state message '{expected_message}' was not received."
 
 
-def test_gsm_state_n717(config_manager, gsm_service):
+def test_gsm_state_n717(gsm_service):
     """
     Test to verify the state of the GSM module.
     """
@@ -155,12 +155,12 @@ def test_gsm_state_n717(config_manager, gsm_service):
     gsm_service.gsm_state()
     expected_message = "Stan kanalu sterujacego: "  # Example expected output
 
-    result = gsm_service.communicator.wait_for_message(expected_message)
+    result = gsm_service.wait_for_message(expected_message)
 
     assert result, f"Expected GSM state message '{expected_message}' was not received."
 
 
-def test_gsm_status_n717(config_manager, gsm_service):
+def test_gsm_status_n717(gsm_service):
     """
     Test to verify the status of the GSM module.
     """
@@ -168,12 +168,12 @@ def test_gsm_status_n717(config_manager, gsm_service):
     gsm_service.gsm_status()
     expected_message = "LCT: Radio status: "  # Example expected output
 
-    result = gsm_service.communicator.wait_for_message(expected_message)
+    result = gsm_service.wait_for_message(expected_message)
 
     assert result, f"Expected GSM status message '{expected_message}' was not received."
 
 
-def test_gsm_cellinfo_n717(config_manager, gsm_service):
+def test_gsm_cellinfo_n717(gsm_service):
     """
     Test to verify the information about the serving cell.
     """
@@ -181,6 +181,6 @@ def test_gsm_cellinfo_n717(config_manager, gsm_service):
     gsm_service.gsm_cellinfo()
     expected_message = "LAC"  # Replace with the expected output
 
-    result = gsm_service.communicator.wait_for_message(expected_message)
+    result = gsm_service.wait_for_message(expected_message)
 
     assert result, f"Expected GSM cell info message '{expected_message}' was not received."

@@ -11,7 +11,7 @@ def gsm_service(request):
     Fixture to initialize and provide the GSMService instance for the tests.
     """
     config_file = request.config.getoption("--serial-config")
-    service = GSMService(config_file=config_file)
+    service = GSMService(config_file=config_file,test_file_name="log_test_gsm_aux_at_n717")
     yield service
     service.close()
 
@@ -52,7 +52,7 @@ def gsm_setup(gsm_service):
     try:
         # Extract status value
         status_value = int(status_message.split(":")[1].split("[")[0].strip())
-
+        gsm_service.restart_disable(3600)
         # Check if status value is <= 3 and handle PIN if necessary
         if status_value <= 3:
             pin_value = '1234'
@@ -81,7 +81,7 @@ def gsm_setup(gsm_service):
     yield
 
 
-def test_gsm_at_cops(gsm_service,gsm_setup):
+def test_gsm_at_cops(gsm_service, gsm_setup):
     """
     Test to verify the +COPS command for the GSM service.
     """
@@ -94,7 +94,7 @@ def test_gsm_at_cops(gsm_service,gsm_setup):
     assert result, f"Expected board serial message '{expected_message}' was not received."
 
 
-def test_gsm_ati(gsm_service,gsm_setup):
+def test_gsm_ati(gsm_service, gsm_setup):
     """
     Test to verify the ATI command for the GSM service.
     """
@@ -115,7 +115,7 @@ def test_gsm_at():
     pass
 
 
-def test_gsm_at_creg(gsm_service,gsm_setup):
+def test_gsm_at_creg(gsm_service, gsm_setup):
     """
     Test to verify the +CREG command for the GSM service.
     """

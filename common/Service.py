@@ -7,14 +7,14 @@ from common.communicator import SerialCommunicator
 
 
 class SerialService(SerialCommunicator):
-    def __init__(self, config_file='config_file.txt'):
+    def __init__(self, config_file='config_file.txt', test_file_name=""):
         """
         Initialize the SerialService with the given configuration file.
 
         Args:
             config_file (str): Path to the configuration file.
         """
-        super().__init__(config_file)
+        super().__init__(config_file, test_file_name)
 
     def login_admin(self):
         if self.is_debug_mode():
@@ -129,8 +129,8 @@ class SerialService(SerialCommunicator):
 
 
 class GSMService(SerialService):
-    def __init__(self, config_file='config_file.txt'):
-        super().__init__(config_file)
+    def __init__(self, config_file='config_file.txt', test_file_name=""):
+        super().__init__(config_file, test_file_name)
 
 
     def gsm_regstate(self):
@@ -177,8 +177,8 @@ class GSMService(SerialService):
 
 
 class APNService(SerialService):
-    def __init__(self, config_file='config_file.txt'):
-        super().__init__(config_file)
+    def __init__(self, config_file='config_file.txt', test_file_name=""):
+        super().__init__(config_file, test_file_name)
 
     def set_apn_name(self, apn_name):
         self.write(f"set apn_name {apn_name}\n")
@@ -235,8 +235,8 @@ class LWM2MService(SerialService):
 
 
 class MockService(SerialService):
-    def __init__(self, config_file='config_file.txt'):
-        super().__init__(config_file)
+    def __init__(self, config_file='config_file.txt', test_file_name=""):
+        super().__init__(config_file, test_file_name)
 
     def mock_set_radio_mode(self,radio_id):
         self.write(f"set radio_mode {radio_id}\n")

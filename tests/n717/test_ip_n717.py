@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from common.Service import SerialService
@@ -6,7 +8,7 @@ from common.Service import SerialService
 @pytest.fixture(scope='module')
 def serial_service(request):
     config_file = request.config.getoption("--serial-config")
-    service = SerialService(config_file=config_file)
+    service = SerialService(config_file=config_file, test_file_name="log_test_ip_n717")
     yield service
     service.close()
 
@@ -14,9 +16,21 @@ def serial_service(request):
 def test_ip_iface_n717(serial_service):
     serial_service.login_admin()
     print("Testing IP interface...")
+
+    # First attempt
     serial_service.write("ip.iface\n")
-    result = serial_service.wait_for_message("DNS2")
-    assert result, "Temp error"
+    result = serial_service.wait_for_message("DNS2", timeout=5)
+
+    if not result:
+        # Wait 30 seconds before retrying
+        time.sleep(30)
+
+        # Second attempt
+        serial_service.write("ip.iface\n")
+        result = serial_service.wait_for_message("DNS2", timeout=5)
+
+    # If the result is still False, this assertion will fail the test.
+    assert result, "Test failed: Expected message 'DNS2' not received after two attempts."
 
 
 def test_ip_state_n717(serial_service):

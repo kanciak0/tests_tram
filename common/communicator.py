@@ -1,14 +1,14 @@
 import serial
 import time
 import configparser
+import os
 
 
 class SerialCommunicator:
-    def __init__(self, config_file='config_file.txt'):
+    def __init__(self, config_file='config_file.txt', log_dir='logs', test_file_name=""):
         config = configparser.ConfigParser()
         config.read(config_file)
 
-        # Ensure the section 'serial' exists
         if not config.has_section('serial'):
             raise configparser.NoSectionError('serial')
 
@@ -19,13 +19,19 @@ class SerialCommunicator:
 
         self.ser = serial.Serial(self.port, baudrate=self.baudrate, timeout=self.timeout)
 
+        self.test_file_name = test_file_name
+        self.log_dir = log_dir
+        self.log_file = self.create_log_file()
 
     def write(self, command):
+        self.log_message(f"Sending command: {command}")
         self.ser.write(command.encode())
         time.sleep(0.1)
 
     def read(self):
-        return self.ser.read(self.ser.in_waiting or 1).decode('utf-8').strip()
+        data = self.ser.read(self.ser.in_waiting or 1).decode('utf-8').strip()
+        self.log_message(f"Received data: {data}")
+        return data
 
     def send_command_and_wait(self, command, expected_message, timeout=30):
         self.write(command)
@@ -37,12 +43,13 @@ class SerialCommunicator:
 
         while True:
             if time.time() - start_time > timeout:
-                print("Timeout waiting for message.")
+                self.log_message("Timeout waiting for message.")
                 return False
 
             if self.ser.in_waiting > 0:
                 data = self.read()
                 buffer += data
+                self.log_message(f"Buffer updated: {buffer}")
 
                 if expected_message in buffer:
                     return True
@@ -52,46 +59,36 @@ class SerialCommunicator:
         buffer = ""
 
         while True:
-            # Check if the timeout has been exceeded
             if time.time() - start_time > timeout:
-                print("Timeout waiting for messages.")
+                self.log_message("Timeout waiting for messages.")
                 return False
 
-            # If data is available in the serial buffer, read it and add it to the buffer string
             if self.ser.in_waiting > 0:
                 data = self.read()
                 buffer += data
+                self.log_message(f"Buffer updated: {buffer}")
 
-                # Check if any of the expected messages are present in the buffer
                 for message in expected_messages:
                     if message in buffer:
                         return True
 
     def is_debug_mode(self):
         self.ser.write(b'\n\r')
-        if not self.wait_for_message("debug >",3):
+        if not self.wait_for_message("debug >", 3):
             return False
         else:
             return True
 
     def read_console_output(self, line_count=5, timeout=5):
-        """
-        Reads a specified number of lines from the console output.
-
-        :param line_count: Number of lines to read from the console output.
-        :param timeout: Time in seconds to wait for data to be available.
-        :return: String containing the console output.
-        """
         output = ""
         end_time = time.time() + timeout
 
         while time.time() < end_time:
             if self.ser.in_waiting > 0:
-                # Read data from the serial port
                 data = self.ser.read(self.ser.in_waiting).decode('utf-8')
                 output += data
+                self.log_message(f"Console output: {data}")
 
-                # Check if we have enough lines
                 if output.count('\n') >= line_count:
                     break
             time.sleep(0.1)  # Small delay to avoid busy-waiting
@@ -106,11 +103,12 @@ class SerialCommunicator:
             if self.ser.in_waiting > 0:
                 data = self.read()
                 buffer += data
+                self.log_message(f"Buffer updated: {buffer}")
 
                 if expected_message in buffer:
                     return buffer
 
-        print(f"Timeout: '{expected_message}' not received within {timeout} seconds.")
+        self.log_message(f"Timeout: '{expected_message}' not received within {timeout} seconds.")
         return ""
 
     @staticmethod
@@ -119,12 +117,32 @@ class SerialCommunicator:
 
     def check_lct(self):
         if not self.wait_for_message("LCT: OK"):
-            print("LCT: ERROR")
+            self.log_message("LCT: ERROR")
             if self.wait_for_message("LCT: Blad"):
-                print("Niedopuszczalna wartosc")
+                self.log_message("Niedopuszczalna wartosc")
                 return False
         else:
             return True
 
     def close(self):
         self.ser.close()
+        if hasattr(self, 'log_file'):
+            self.log_file.close()
+
+    def create_log_file(self):
+        # Ensure the log directory exists
+        if not os.path.exists(self.log_dir):
+            os.makedirs(self.log_dir)
+
+        timestamp = time.strftime("%Y%m%d_%H%M%S")
+        com_port = self.port
+
+        log_filename = os.path.join(self.log_dir, f"serial_log{self.test_file_name}_{com_port}_{timestamp}.txt")
+        return open(log_filename, 'a')
+
+    def log_message(self, message):
+        timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+        milliseconds = int((time.time() % 1) * 1000)
+        log_entry = f"{timestamp}.{milliseconds:03d} - {message}\n"
+        self.log_file.write(log_entry)
+        self.log_file.flush()  # Ensure the log entry is written to the file

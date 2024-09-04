@@ -1,0 +1,176 @@
+2024-09-04 11:27:30.103 - Received data: debug >
+debug >
+2024-09-04 11:27:30.103 - Buffer updated: debug >
+debug >
+2024-09-04 11:27:30.103 - Sending command: gsm.ver
+
+2024-09-04 11:27:30.204 - Received data: gsm.ver
+
+LCT: Typ modulu: N717 LTE cat. 1
+LCT: Firmware  : N717-A03-STD-BZ-014
+
+debug >
+2024-09-04 11:27:30.204 - Buffer updated: gsm.ver
+
+LCT: Typ modulu: N717 LTE cat. 1
+LCT: Firmware  : N717-A03-STD-BZ-014
+
+debug >
+2024-09-04 11:27:30.226 - Received data: debug >
+debug >
+2024-09-04 11:27:30.226 - Buffer updated: debug >
+debug >
+2024-09-04 11:27:30.226 - Sending command: gsm.ids
+
+2024-09-04 11:27:30.327 - Received data: gsm.ids
+
+IMEI          : 864566060006488
+IMSI          : 260036449475372
+SIMID         : 8948032116494753724
+MSISDN        : 
+
+debug >
+2024-09-04 11:27:30.327 - Buffer updated: gsm.ids
+
+IMEI          : 864566060006488
+IMSI          : 260036449475372
+SIMID         : 8948032116494753724
+MSISDN        : 
+
+debug >
+2024-09-04 11:27:30.338 - Received data: 
+2024-09-04 11:27:30.338 - Buffer updated: 
+2024-09-04 11:27:30.354 - Received data: debug >
+debug >
+2024-09-04 11:27:30.354 - Buffer updated: debug >
+debug >
+2024-09-04 11:27:30.354 - Sending command: gsm.band
+
+2024-09-04 11:27:30.455 - Received data: gsm.band
+
+LCT:  GSM900
+
+debug >
+2024-09-04 11:27:30.455 - Buffer updated: gsm.band
+
+LCT:  GSM900
+
+debug >
+2024-09-04 11:27:30.465 - Received data: deb
+2024-09-04 11:27:30.465 - Buffer updated: deb
+2024-09-04 11:27:30.482 - Received data: ug >
+debug >
+2024-09-04 11:27:30.482 - Buffer updated: debug >
+debug >
+2024-09-04 11:27:30.482 - Sending command: gsm.rssi
+
+2024-09-04 11:27:30.583 - Console output: gsm.rssi
+
+RSSI: -65 dBm
+BER: 0 (raw)
+
+debug >
+2024-09-04 11:27:30.594 - Received data: 
+2024-09-04 11:27:30.594 - Buffer updated: 
+2024-09-04 11:27:30.610 - Received data: debug >
+debug >
+2024-09-04 11:27:30.610 - Buffer updated: debug >
+debug >
+2024-09-04 11:27:30.610 - Sending command: gsm.rssiex
+
+2024-09-04 11:27:30.710 - Received data: gsm.rssiex
+
+Temp:    RSSI: -065 dBm, BER: 0 (raw)
+BCCH:    RSSI: -065 dBm, BER: 0 (raw)
+BCCHAvg: RSSI: -064 dBm, BER: 0 (raw)
+
+debug >
+2024-09-04 11:27:30.710 - Buffer updated: gsm.rssiex
+
+Temp:    RSSI: -065 dBm, BER: 0 (raw)
+BCCH:    RSSI: -065 dBm, BER: 0 (raw)
+BCCHAvg: RSSI: -064 dBm, BER: 0 (raw)
+
+debug >
+2024-09-04 11:27:30.727 - Received data: debug >
+debug >
+2024-09-04 11:27:30.727 - Buffer updated: debug >
+debug >
+2024-09-04 11:27:30.727 - Sending command: gsm.regstate
+
+2024-09-04 11:27:30.828 - Received data: gsm.regstate
+
+Siec GSM: 1 [zarejestrowany w swojej sieci]
+Siec GPRS: 1 [zarejestrowany w swojej sieci]
+Operator: Orange PL
+
+debug >
+2024-09-04 11:27:30.829 - Buffer updated: gsm.regstate
+
+Siec GSM: 1 [zarejestrowany w swojej sieci]
+Siec GPRS: 1 [zarejestrowany w swojej sieci]
+Operator: Orange PL
+
+debug >
+2024-09-04 11:27:30.844 - Received data: debug >
+debug >
+2024-09-04 11:27:30.844 - Buffer updated: debug >
+debug >
+2024-09-04 11:27:30.844 - Sending command: gsm.state
+
+2024-09-04 11:27:30.945 - Received data: gsm.state
+
+Stan kanalu sterujacego: 5 [gotowy do pracy]
+
+debug >
+2024-09-04 11:27:30.945 - Buffer updated: gsm.state
+
+Stan kanalu sterujacego: 5 [gotowy do pracy]
+
+debug >
+2024-09-04 11:27:30.956 - Received data: 
+2024-09-04 11:27:30.956 - Buffer updated: 
+2024-09-04 11:27:30.972 - Received data: debug >
+debug >
+2024-09-04 11:27:30.972 - Buffer updated: debug >
+debug >
+2024-09-04 11:27:30.972 - Sending command: gsm.status
+
+2024-09-04 11:27:31.073 - Received data: gsm.status
+
+LCT: Radio status: 1 [OK]
+LCT: Ostatni blad krytyczny: 0000
+
+debug >
+2024-09-04 11:27:31.073 - Buffer updated: gsm.status
+
+LCT: Radio status: 1 [OK]
+LCT: Ostatni blad krytyczny: 0000
+
+debug >
+2024-09-04 11:27:31.081 - Received data: 
+2024-09-04 11:27:31.081 - Buffer updated: 
+2024-09-04 11:27:31.098 - Received data: debug >
+debug >
+2024-09-04 11:27:31.098 - Buffer updated: debug >
+debug >
+2024-09-04 11:27:31.098 - Sending command: gsm.cellinfo
+
+2024-09-04 11:27:31.199 - Received data: gsm.cellinfo
+
+LAC   : 0000d2f7
+CI    : 00008b3b
+Act   : 3 (GSM)
+RAC   : 00
+UARFCN: 122
+
+debug >
+2024-09-04 11:27:31.199 - Buffer updated: gsm.cellinfo
+
+LAC   : 0000d2f7
+CI    : 00008b3b
+Act   : 3 (GSM)
+RAC   : 00
+UARFCN: 122
+
+debug >

@@ -1,0 +1,59 @@
+2024-09-04 11:24:09.583 - Received data: debug >
+debug >
+2024-09-04 11:24:09.583 - Buffer updated: debug >
+debug >
+2024-09-04 11:24:09.583 - Sending command: gsm.ver
+
+2024-09-04 11:24:09.684 - Received data: gsm.ver
+
+LCT: Typ modulu: N717 LTE cat. 1
+LCT: Firmware  : N717-A03-STD-BZ-014
+
+debug >
+2024-09-04 11:24:09.684 - Buffer updated: gsm.ver
+
+LCT: Typ modulu: N717 LTE cat. 1
+LCT: Firmware  : N717-A03-STD-BZ-014
+
+debug >
+2024-09-04 11:24:09.705 - Received data: debug >
+debug >
+2024-09-04 11:24:09.705 - Buffer updated: debug >
+debug >
+2024-09-04 11:24:09.705 - Sending command: gsm.ids
+
+2024-09-04 11:24:09.807 - Received data: gsm.ids
+
+IMEI          : 864566060006488
+IMSI          : 260036449475372
+SIMID         : 8948032116494753724
+MSISDN        : 
+
+debug >
+2024-09-04 11:24:09.807 - Buffer updated: gsm.ids
+
+IMEI          : 864566060006488
+IMSI          : 260036449475372
+SIMID         : 8948032116494753724
+MSISDN        : 
+
+debug >
+2024-09-04 11:24:09.832 - Received data: debug >
+debug >
+2024-09-04 11:24:09.832 - Buffer updated: debug >
+debug >
+2024-09-04 11:24:09.832 - Sending command: gsm.band
+
+2024-09-04 11:24:09.933 - Received data: gsm.band
+
+LCT:  GSM900
+
+debug >
+2024-09-04 11:24:09.933 - Buffer updated: gsm.band
+
+LCT:  GSM900
+
+debug >
+2024-09-04 11:24:10.064 - Received data: INFO :LWM2M: [lwm2m:prv_handleRegistrationUpdateReply(890) ]:123 Registration successful
+2024-09-04 11:24:10.064 - Buffer updated: INFO :LWM2M: [lwm2m:prv_handleRegistrationUpdateReply(890) ]:123 Registration successful
+2024-09-04 11:24:14.934 - Timeout waiting for messages.

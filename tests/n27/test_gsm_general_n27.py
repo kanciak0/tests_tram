@@ -11,7 +11,7 @@ def gsm_service(request):
     Fixture to initialize and provide the GSMService instance for the tests.
     """
     config_file = request.config.getoption("--serial-config")
-    service = GSMService(config_file=config_file)
+    service = GSMService(config_file=config_file,test_file_name="log_test_gsm_general_n27")
     yield service
     service.close()
 

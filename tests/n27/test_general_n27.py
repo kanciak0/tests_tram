@@ -3,14 +3,13 @@ import pytest
 from common.Service import SerialService
 
 
-
 @pytest.fixture(scope='module')
 def serial_service(request):
     """
     Fixture to initialize and provide the SerialService instance for the tests.
     """
     config_file = request.config.getoption("--serial-config")
-    service = SerialService(config_file=config_file)
+    service = SerialService(config_file=config_file,test_file_name="log_test_general_n27")
     yield service
     service.close()
 
