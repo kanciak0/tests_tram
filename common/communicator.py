@@ -1,11 +1,13 @@
-import serial
-import time
 import configparser
+import threading
+import time
+import serial
 import os
+from datetime import datetime
 
 
 class SerialCommunicator:
-    def __init__(self, config_file='config_file.txt', log_dir='logs', test_file_name=""):
+    def __init__(self, config_file='config_file.txt', log_dir='logs'):
         config = configparser.ConfigParser()
         config.read(config_file)
 
@@ -19,19 +21,46 @@ class SerialCommunicator:
 
         self.ser = serial.Serial(self.port, baudrate=self.baudrate, timeout=self.timeout)
 
-        self.test_file_name = test_file_name
         self.log_dir = log_dir
-        self.log_file = self.create_log_file()
+        if not os.path.exists(self.log_dir):
+            os.makedirs(self.log_dir)
+
+        # Create a timestamp for the log file name
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M')
+        # Determine the log file based on the COM port from the config
+        self.log_file = os.path.join(self.log_dir, f'serial_log_{self.port.replace(":", "_")}_{timestamp}.txt')
+
+        self.reading_thread = None
+        self.stop_reading = threading.Event()
 
     def write(self, command):
-        self.log_message(f"Sending command: {command}")
         self.ser.write(command.encode())
         time.sleep(0.1)
 
     def read(self):
-        data = self.ser.read(self.ser.in_waiting or 1).decode('utf-8').strip()
-        self.log_message(f"Received data: {data}")
+        data = self.ser.read(self.ser.in_waiting or 1).decode('utf-8')
+        self._log_data(data)
         return data
+
+    def _log_data(self, data):
+        """Log the data to a file with a timestamp, filtering out unwanted entries."""
+        # Get the current timestamp with milliseconds
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]  # Slice to get milliseconds
+        # Split data into lines and log each line with the timestamp
+        log_entries = data.splitlines()
+        with open(self.log_file, 'a') as f:
+            for entry in log_entries:
+                entry = entry.strip()
+                if entry and not self._is_unwanted_entry(entry):
+                    f.write(f"{timestamp} - {entry}\n")
+
+
+    def _is_unwanted_entry(self, entry):
+        """Determine if the log entry should be ignored."""
+        # Check if the entry is empty or starts with 'debug >'
+        if entry == "" or entry.startswith("debug >"):
+            return True
+        return False
 
     def send_command_and_wait(self, command, expected_message, timeout=30):
         self.write(command)
@@ -43,13 +72,11 @@ class SerialCommunicator:
 
         while True:
             if time.time() - start_time > timeout:
-                self.log_message("Timeout waiting for message.")
                 return False
 
             if self.ser.in_waiting > 0:
                 data = self.read()
                 buffer += data
-                self.log_message(f"Buffer updated: {buffer}")
 
                 if expected_message in buffer:
                     return True
@@ -60,13 +87,11 @@ class SerialCommunicator:
 
         while True:
             if time.time() - start_time > timeout:
-                self.log_message("Timeout waiting for messages.")
                 return False
 
             if self.ser.in_waiting > 0:
                 data = self.read()
                 buffer += data
-                self.log_message(f"Buffer updated: {buffer}")
 
                 for message in expected_messages:
                     if message in buffer:
@@ -87,7 +112,6 @@ class SerialCommunicator:
             if self.ser.in_waiting > 0:
                 data = self.ser.read(self.ser.in_waiting).decode('utf-8')
                 output += data
-                self.log_message(f"Console output: {data}")
 
                 if output.count('\n') >= line_count:
                     break
@@ -103,12 +127,9 @@ class SerialCommunicator:
             if self.ser.in_waiting > 0:
                 data = self.read()
                 buffer += data
-                self.log_message(f"Buffer updated: {buffer}")
 
                 if expected_message in buffer:
                     return buffer
-
-        self.log_message(f"Timeout: '{expected_message}' not received within {timeout} seconds.")
         return ""
 
     @staticmethod
@@ -117,32 +138,31 @@ class SerialCommunicator:
 
     def check_lct(self):
         if not self.wait_for_message("LCT: OK"):
-            self.log_message("LCT: ERROR")
             if self.wait_for_message("LCT: Blad"):
-                self.log_message("Niedopuszczalna wartosc")
                 return False
         else:
             return True
 
-    def close(self):
-        self.ser.close()
-        if hasattr(self, 'log_file'):
-            self.log_file.close()
+    def read_configuration_from_file(self, file_path):
+        """
+        Reads and parses the configuration data from the specified file.
 
-    def create_log_file(self):
-        # Ensure the log directory exists
-        if not os.path.exists(self.log_dir):
-            os.makedirs(self.log_dir)
+        Args:
+            file_path (str): Path to the backup configuration file.
 
-        timestamp = time.strftime("%Y%m%d_%H%M%S")
-        com_port = self.port
+        Returns:
+            dict: Parsed configuration data.
+        """
+        config_data = {}
 
-        log_filename = os.path.join(self.log_dir, f"serial_log{self.test_file_name}_{com_port}_{timestamp}.txt")
-        return open(log_filename, 'a')
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+            for line in lines:
+                line = line.strip()
+                if line and '=' in line:
+                    key, value = line.split('=', 1)
+                    config_data[key.strip()] = value.strip()
 
-    def log_message(self, message):
-        timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
-        milliseconds = int((time.time() % 1) * 1000)
-        log_entry = f"{timestamp}.{milliseconds:03d} - {message}\n"
-        self.log_file.write(log_entry)
-        self.log_file.flush()  # Ensure the log entry is written to the file
+        return config_data
+
+

@@ -8,9 +8,9 @@ from common.Service import SerialService
 @pytest.fixture(scope='module')
 def serial_service(request):
     config_file = request.config.getoption("--serial-config")
-    service = SerialService(config_file=config_file, test_file_name="log_test_ip_n717")
+    service = SerialService(config_file=config_file)
     yield service
-    service.close()
+
 
 
 def test_ip_iface_n717(serial_service):

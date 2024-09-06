@@ -1,3 +1,6 @@
+import logging
+import time
+
 import pytest
 
 from common.Service import SerialService
@@ -9,10 +12,12 @@ def serial_service(request):
     Fixture to initialize and provide the SerialService instance for the tests.
     """
     config_file = request.config.getoption("--serial-config")
-    service = SerialService(config_file=config_file,test_file_name="log_test_uplink_n717")
+    service = SerialService(config_file=config_file)
     yield service
-    service.close()
-
+    logging.info("--------------------------------RESTORING CONFIGURATION----------------------------")
+    time.sleep(5)
+    service.restore_configuration(config_file='backup_logs/backup_config.txt')
+    service.ser.close()
 
 @pytest.mark.skip("Configuration not working")
 def test_uplink1_rs485_custom_n717(serial_service):

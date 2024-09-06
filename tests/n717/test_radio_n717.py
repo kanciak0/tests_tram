@@ -1,3 +1,6 @@
+import logging
+import time
+
 import pytest
 
 from common.Service import GSMService
@@ -6,9 +9,8 @@ from common.Service import GSMService
 @pytest.fixture(scope='module')
 def gsm_service(request):
     config_file = request.config.getoption("--serial-config")
-    service = GSMService(config_file=config_file, test_file_name="log_test_radio_n717")
+    service = GSMService(config_file=config_file)
     yield service
-    service.close()
 
 
 def test_set_auto_radio_mode_n717(gsm_service):
@@ -38,7 +40,7 @@ def test_set_auto_radio_mode_n717(gsm_service):
     read_value = response.split(':')[1].strip().split('\r\n')[0] if response else None
     assert read_value == f"conf_bands={auto_conf_bands}", \
         f"Expected conf_bands={auto_conf_bands}, but got {read_value}"
-    
+
 
     print("Test for setting radio mode to auto completed successfully.")
 

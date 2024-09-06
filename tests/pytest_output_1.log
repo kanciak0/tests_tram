@@ -1,0 +1,125 @@
+INFO     root:test_apn_n27.py:72 Configuration saved to backup file: backup_logs\backup_config.txt
+INFO     root:test_apn_n27.py:125 Starting test_set_apn_name
+INFO     root:test_apn_n27.py:138 APN name test passed successfully.
+INFO     root:test_apn_n27.py:152 Starting test_set_apn_login
+INFO     root:test_apn_n27.py:166 APN login test passed successfully.
+INFO     root:test_apn_n27.py:180 Starting test_set_apn_password
+INFO     root:test_apn_n27.py:194 APN password test passed successfully.
+INFO     root:test_apn_n27.py:208 Starting test_set_apn_auth
+INFO     root:test_apn_n27.py:224 APN authentication method test passed successfully.
+INFO     root:test_apn_n27.py:238 Starting test_set_apn_tries
+INFO     root:test_apn_n27.py:254 APN tries parameter test passed successfully.
+INFO     root:test_general_n27.py:26 Starting test_ver_n27
+INFO     root:test_general_n27.py:32 Version information test passed successfully.
+INFO     root:test_general_n27.py:45 Starting test_hwver_n27
+INFO     root:test_general_n27.py:51 Hardware version test passed successfully.
+INFO     root:test_general_n27.py:72 Starting test_urc_with_parameters_n27 with URC value 1
+INFO     root:test_general_n27.py:78 URC with parameters test passed successfully.
+INFO     root:test_general_n27.py:72 Starting test_urc_with_parameters_n27 with URC value 0
+INFO     root:test_general_n27.py:78 URC with parameters test passed successfully.
+INFO     root:test_general_n27.py:91 Starting test_config_info_n27
+INFO     root:test_general_n27.py:98 Configuration info test passed successfully.
+INFO     root:test_general_n27.py:111 Starting test_urc_without_parameters_n27
+INFO     root:test_general_n27.py:117 URC without parameters test passed successfully.
+INFO     root:test_general_n27.py:129 Starting test_board_serial_show_n27
+INFO     root:test_general_n27.py:136 Board serial number test passed successfully.
+INFO     root:test_gsm_general_n27.py:28 Starting test_gsm_ver_n27
+INFO     root:test_gsm_general_n27.py:35 GSM version test passed successfully.
+INFO     root:test_gsm_general_n27.py:48 Starting test_gsm_ids_n27
+INFO     root:test_gsm_general_n27.py:55 GSM IDs test passed successfully.
+INFO     root:test_gsm_general_n27.py:68 Starting test_gsm_band_n27
+INFO     root:test_gsm_general_n27.py:117 GSM band test passed successfully.
+INFO     root:test_gsm_general_n27.py:130 Starting test_gsm_rssi_n27
+INFO     root:test_gsm_general_n27.py:137 GSM RSSI test passed successfully.
+INFO     root:test_gsm_general_n27.py:150 Starting test_gsm_rssiex_n27
+INFO     root:test_gsm_general_n27.py:157 GSM RSSIex test passed successfully.
+INFO     root:test_gsm_general_n27.py:170 Starting test_gsm_regstate_n27
+INFO     root:test_gsm_general_n27.py:177 GSM registration state test passed successfully.
+INFO     root:test_gsm_general_n27.py:190 Starting test_gsm_state_n27
+INFO     root:test_gsm_general_n27.py:197 GSM state test passed successfully.
+INFO     root:test_gsm_general_n27.py:210 Starting test_gsm_status_n27
+INFO     root:test_gsm_general_n27.py:217 GSM status test passed successfully.
+INFO     root:test_gsm_general_n27.py:230 Starting test_gsm_cellinfo_n27
+INFO     root:test_gsm_general_n27.py:237 GSM cell info test passed successfully.
+INFO     root:test_ip_n27.py:25 Starting test_ip_iface_n27
+INFO     root:test_ip_n27.py:44 IP interface test completed successfully.
+INFO     root:test_ip_n27.py:56 Starting test_ip_state_n27
+INFO     root:test_ip_n27.py:65 IP state test completed successfully.
+INFO     root:test_ip_n27.py:77 Starting test_ip_ping_n27 to 8.8.8.8
+INFO     root:test_ip_n27.py:91 Ping test to 8.8.8.8 completed successfully.
+INFO     root:test_radio_n27.py:28 Starting test_set_auto_radio_mode_n27
+ERROR    root:test_radio_n27.py:64 Test failed: Expected conf_bands=GSM900,GSM1800,LTE2100,LTE1800,LTE900,LTE800,LTE450B31, but got 57
+assert '57' == 'conf_bands=G...800,LTE450B31'
+  
+  - conf_bands=GSM900,GSM1800,LTE2100,LTE1800,LTE900,LTE800,LTE450B31
+  + 57
+INFO     root:test_radio_n27.py:75 Starting test_set_lte_radio_mode_n27
+INFO     root:test_radio_n27.py:110 Test for setting radio mode to LTE completed successfully.
+INFO     root:test_radio_n27.py:123 Starting test_set_gsm_radio_mode_n27
+INFO     root:test_radio_n27.py:158 Test for setting radio mode to GSM completed successfully.
+INFO     root:test_radio_n27.py:171 Starting test_set_pref_bands_to_lte_n27
+INFO     root:test_radio_n27.py:193 Pref bands are correctly set to pref_bands=LTE2100,LTE1800
+INFO     root:test_radio_n27.py:194 Test for setting preferred bands to LTE completed successfully.
+INFO     root:test_radio_n27.py:207 Starting test_set_pref_bands_to_2g_n27
+ERROR    root:test_radio_n27.py:232 Test failed: Expected pref_bands=GSM900,GSM1800, but got 58
+assert '58' == 'pref_bands=GSM900,GSM1800'
+  
+  - pref_bands=GSM900,GSM1800
+  + 58
+INFO     root:test_radio_n27.py:243 Starting test_tcp_port_change_n27
+INFO     root:test_radio_n27.py:261 Test for changing TCP port value completed successfully.
+INFO     root:test_uplink_n27.py:65 Starting test_uplink1_rs232_custom_speed_n27
+INFO     root:test_uplink_n27.py:84 Uplink1 configuration with RS232 and custom speed completed successfully.
+INFO     root:test_uplink_n27.py:97 Starting test_uplink1_rs232_custom_framing_n27
+INFO     root:test_uplink_n27.py:116 Uplink1 configuration with RS232 and custom framing completed successfully.
+INFO     root:test_apn_n717.py:51 Starting test_set_apn_name
+INFO     root:test_apn_n717.py:62 APN name test passed successfully.
+INFO     root:test_apn_n717.py:75 Starting test_set_apn_login
+INFO     root:test_apn_n717.py:87 APN login test passed successfully.
+INFO     root:test_apn_n717.py:100 Starting test_set_apn_password
+INFO     root:test_apn_n717.py:112 APN password test passed successfully.
+INFO     root:test_apn_n717.py:125 Starting test_set_apn_auth
+INFO     root:test_apn_n717.py:139 APN authentication method test passed successfully.
+INFO     root:test_apn_n717.py:152 Starting test_set_apn_tries
+INFO     root:test_apn_n717.py:164 APN tries parameter test passed successfully.
+INFO     root:test_general_n717.py:23 Starting test_ver_n717
+INFO     root:test_general_n717.py:29 Version information test passed successfully.
+INFO     root:test_general_n717.py:42 Starting test_hwver_n717
+INFO     root:test_general_n717.py:48 Hardware version test passed successfully.
+INFO     root:test_general_n717.py:65 Starting test_urc_with_parameters_n717 with URC value 1
+INFO     root:test_general_n717.py:71 URC with parameters test passed successfully.
+INFO     root:test_general_n717.py:65 Starting test_urc_with_parameters_n717 with URC value 0
+INFO     root:test_general_n717.py:71 URC with parameters test passed successfully.
+INFO     root:test_general_n717.py:84 Starting test_config_info_n717
+INFO     root:test_general_n717.py:91 Configuration info test passed successfully.
+INFO     root:test_general_n717.py:104 Starting test_urc_without_parameters_n717
+INFO     root:test_general_n717.py:110 URC without parameters test passed successfully.
+INFO     root:test_general_n717.py:123 Starting test_board_serial_show_n717
+INFO     root:test_general_n717.py:130 Board serial number test passed successfully.
+INFO     root:test_gsm_aux_at_n717.py:83 GSM setup fixture completed
+INFO     root:test_gsm_aux_at_n717.py:91 Starting test_gsm_at_cops
+INFO     root:test_gsm_aux_at_n717.py:100 GSM AT +COPS test passed successfully.
+INFO     root:test_gsm_aux_at_n717.py:113 Starting test_gsm_ati
+INFO     root:test_gsm_aux_at_n717.py:122 GSM ATI test passed successfully.
+INFO     root:test_gsm_aux_at_n717.py:135 Starting test_gsm_at (placeholder)
+INFO     root:test_gsm_aux_at_n717.py:143 Starting test_gsm_at_creg
+INFO     root:test_gsm_aux_at_n717.py:152 GSM +CREG test passed successfully.
+INFO     root:test_gsm_general_n717.py:24 Starting test_gsm_ver_n717
+INFO     root:test_gsm_general_n717.py:31 GSM version test passed successfully.
+INFO     root:test_gsm_general_n717.py:44 Starting test_gsm_ids_n717
+INFO     root:test_gsm_general_n717.py:51 GSM IDs test passed successfully.
+INFO     root:test_gsm_general_n717.py:64 Starting test_gsm_band_n717
+INFO     root:test_gsm_general_n717.py:96 GSM band test passed successfully.
+INFO     root:test_gsm_general_n717.py:109 Starting test_gsm_rssi_n717
+INFO     root:test_gsm_general_n717.py:123 RSSI test passed successfully.
+INFO     root:test_gsm_general_n717.py:136 Starting test_gsm_rssiex_n717
+INFO     root:test_gsm_general_n717.py:143 GSM RSSIex test passed successfully.
+INFO     root:test_gsm_general_n717.py:156 Starting test_gsm_regstate_n717
+INFO     root:test_gsm_general_n717.py:163 GSM registration state test passed successfully.
+INFO     root:test_gsm_general_n717.py:176 Starting test_gsm_state_n717
+INFO     root:test_gsm_general_n717.py:183 GSM state test passed successfully.
+INFO     root:test_gsm_general_n717.py:196 Starting test_gsm_status_n717
+INFO     root:test_gsm_general_n717.py:203 GSM status test passed successfully.
+INFO     root:test_gsm_general_n717.py:216 Starting test_gsm_cellinfo_n717
+INFO     root:test_gsm_general_n717.py:223 GSM cell info test passed successfully.
+INFO     root:test_zmock.py:14 --------------------------------RESTORING CONFIGURATION----------------------------

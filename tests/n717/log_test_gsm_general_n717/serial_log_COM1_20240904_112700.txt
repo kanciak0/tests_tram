@@ -1,16 +1,0 @@
-2024-09-04 11:27:00.413 - Received data: debug >
-debug >
-2024-09-04 11:27:00.413 - Buffer updated: debug >
-debug >
-2024-09-04 11:27:00.413 - Sending command: gsm.band
-
-2024-09-04 11:27:00.514 - Received data: gsm.band
-
-LCT:  GSM900
-
-debug >
-2024-09-04 11:27:00.515 - Buffer updated: gsm.band
-
-LCT:  GSM900
-
-debug >
