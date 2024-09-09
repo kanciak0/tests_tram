@@ -1,3 +1,4 @@
+import os
 import time
 
 from common.communicator import SerialCommunicator
@@ -7,14 +8,14 @@ from common.communicator import SerialCommunicator
 
 
 class SerialService(SerialCommunicator):
-    def __init__(self, config_file='config_file.txt', test_file_name=""):
+    def __init__(self, config_file='config_file.txt'):
         """
         Initialize the SerialService with the given configuration file.
 
         Args:
             config_file (str): Path to the configuration file.
         """
-        super().__init__(config_file, test_file_name)
+        super().__init__(config_file)
 
     def login_admin(self):
         if self.is_debug_mode():
@@ -127,10 +128,123 @@ class SerialService(SerialCommunicator):
     def restart_disable(self, duration):
         self.write(f"restart.disable {duration}\n")
 
+    def restore_configuration(self, config_file='backup_logs/backup_config.txt'):
+        """
+        Restore the configuration from the given file to the serial device.
+        """
+        with open(config_file, 'r') as file:
+            config_lines = file.readlines()
+
+        # Process each line in the configuration file
+        for line in config_lines:
+            # Strip leading and trailing whitespace
+            line = line.strip()
+
+            # Skip lines that are not in 'key=value' format or are empty
+            if not line or '=' not in line:
+                continue
+
+            # Extract key and value from the line
+            key, value = line.split('=', 1)
+
+            # Remove leading and trailing spaces
+            key = key.strip()
+            value = value.strip()
+
+            # Format the command based on the key
+            command = None
+            if key.startswith('apn_'):
+                # Handle APN parameters
+                if key == 'apn_name':
+                    command = f"set apn_name {value}\n"
+                    time.sleep(0.1)
+                elif key == 'apn_login':
+                    command = f"set apn_login {value}\n"
+                    time.sleep(0.1)
+                elif key == 'apn_passwd':
+                    command = f"set apn_passwd {value}\n"
+                    time.sleep(0.1)
+                elif key == 'apn_auth':
+                    command = f"set apn_auth {value}\n"
+                    time.sleep(0.1)
+                elif key == 'apn_tries':
+                    command = f"set apn_tries {value}\n"
+                    time.sleep(0.1)
+            elif key.startswith('lwm2m_'):
+                # Handle LWM2M parameters
+                if key == 'lwm2m_uri':
+                    command = f"set lwm2m_uri {value}\n"
+                    time.sleep(0.1)
+                elif key == 'lwm2m_client_port':
+                    command = f"set lwm2m_client_port {value}\n"
+                    time.sleep(0.1)
+                elif key == 'lwm2m_coap_block_size':
+                    command = f"set lwm2m_coap_block_size {value}\n"
+                    time.sleep(0.1)
+                elif key == 'lwm2m_lifetime':
+                    command = f"set lwm2m_lifetime {value}\n"
+                    time.sleep(0.1)
+                elif key == 'lwm2m_bootstrap':
+                    command = f"set lwm2m_bootstrap {value}\n"
+                    time.sleep(0.1)
+                elif key == 'lwm2m_reconnect':
+                    command = f"set lwm2m_reconnect {value}\n"
+                    time.sleep(0.1)
+                elif key == 'lwm2m_psk_id':
+                    command = f"set lwm2m_psk_id {value}\n"
+                    time.sleep(0.1)
+                elif key == 'lwm2m_psk_key':
+                    command = f"set lwm2m_psk_key {value}\n"
+                    time.sleep(0.1)
+            elif key.startswith(('rtc_', 'timesync_', 'autoreset_')):
+                # Handle RTC, time sync, and auto-reset parameters
+                command = f"set {key} {value}\n"
+            elif key.startswith(('allowed_ip', 'tcp_session_tout', 'icmp_server', 'test_server_ip',
+                                 'test_server_ip2', 'test_failure_action', 'testing_interval',
+                                 'lct_tcp_port', 'ntp_server_ip', 'ntp_backup_server_ip',
+                                 'ntp_sync_interval', 'ntp_sync_time', 'uplink1')):
+                # Handle IP, TCP, ICMP, test server, and other network-related parameters
+                command = f"set {key} {value}\n"
+                time.sleep(0.1)
+            elif key.startswith(('avail_bands', 'conf_bands', 'pref_bands', 'pref_bands_cur',
+                                 'test_ping_size', 'test_ping_count', 'test_ping_tout',
+                                 'test_ping_ratio', 'test_ping_delay')):
+                # Handle bands and test parameters
+                command = f"set {key} {value}\n"
+                time.sleep(0.1)
+            elif key.startswith('cell_lock'):
+                # Handle cell lock parameters
+                command = f"set {key} {value}\n"
+                time.sleep(0.1)
+            elif key in ['active_radio', 'pin', 'puk', 'reset_num1', 'reset_num2', 'reset_num3',
+                         'radio_mode', 'network_searching_tout', 'radio_mode_auto_delay',
+                         'radio_mode_pref', 'radio_mode_rssi_low', 'timesync1', 'timesync2',
+                         'time_synchronized']:
+                # Handle additional parameters
+                command = f"set {key} {value}\n"
+                time.sleep(0.1)
+            elif key.startswith('autoreset_'):
+                # Handle autoreset parameters
+                command = f"set {key} {value}\n"
+            else:
+                print(f"Unrecognized key: {key}")
+
+            # Send the command if it's recognized
+            if command:
+                self.ser.write(command.encode())  # Encode the command to bytes
+
+        # Optionally, send a command to save the configuration
+        self.ser.write('save\n'.encode())  # Encode 'save' to bytes
+        print("Configuration restored and saved.")
+        self.ser.write('reset\n'.encode())
+        time.sleep(20)
+        os.remove(config_file)
+        print(f"Configuration file {config_file} deleted.")
+
 
 class GSMService(SerialService):
-    def __init__(self, config_file='config_file.txt', test_file_name=""):
-        super().__init__(config_file, test_file_name)
+    def __init__(self, config_file='config_file.txt'):
+        super().__init__(config_file)
 
 
     def gsm_regstate(self):
@@ -177,8 +291,8 @@ class GSMService(SerialService):
 
 
 class APNService(SerialService):
-    def __init__(self, config_file='config_file.txt', test_file_name=""):
-        super().__init__(config_file, test_file_name)
+    def __init__(self, config_file='config_file.txt'):
+        super().__init__(config_file)
 
     def set_apn_name(self, apn_name):
         self.write(f"set apn_name {apn_name}\n")
@@ -235,8 +349,8 @@ class LWM2MService(SerialService):
 
 
 class MockService(SerialService):
-    def __init__(self, config_file='config_file.txt', test_file_name=""):
-        super().__init__(config_file, test_file_name)
+    def __init__(self, config_file='config_file.txt'):
+        super().__init__(config_file)
 
     def mock_set_radio_mode(self,radio_id):
         self.write(f"set radio_mode {radio_id}\n")

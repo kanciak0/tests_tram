@@ -1,6 +1,12 @@
 import pytest
+import logging
 
 from common.Service import SerialService
+
+# Configure logging with timestamps to milliseconds
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s.%(msecs)03d - %(name)s - %(levelname)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
 
 
 @pytest.fixture(scope='module')
@@ -9,83 +15,107 @@ def serial_service(request):
     Fixture to initialize and provide the SerialService instance for the tests.
     """
     config_file = request.config.getoption("--serial-config")
-    service = SerialService(config_file=config_file,test_file_name="log_test_uplink_n717")
+    service = SerialService(config_file=config_file)
     yield service
-    service.close()
+    service.ser.close()
 
 
 @pytest.mark.skip("Configuration not working")
-def test_uplink1_rs485_custom_n717(serial_service):
+def test_uplink1_rs485_customn717(serial_service):
     """
     Test to verify the uplink1 configuration with RS485 and custom settings.
-    This test is marked as deprecated and should not be run for the current firmware version.
     """
-    print("Testing uplink1 configuration with RS485 and custom settings...")
-    serial_service.login_admin()
+    logging.info("Starting test_uplink1_rs485_custom_n27")
+    try:
+        serial_service.login_admin()
 
-    # Set the uplink1 configuration
-    uplink = "rs485:7E1:1200,srv,tcp:8500,apap-bin"
-    serial_service.write(f"set uplink1 {uplink}\n")
+        # Set the uplink1 configuration
+        uplink = "rs485:7E1:1200,srv,tcp:8500,apap-bin"
+        serial_service.write(f"set uplink1 {uplink}\n")
 
-    serial_service.save()
-    serial_service.reset()
+        serial_service.save()
+        serial_service.reset()
 
-    # Wait for the restart or configuration to take effect
-    expected_message = "Modem restarted"
-    result = serial_service.wait_for_message(expected_message)
+        # Wait for the restart or configuration to take effect
+        expected_message = "Modem restarted"
+        result = serial_service.wait_for_message(expected_message)
 
-    assert result, f"Expected message '{expected_message}' was not received."
+        assert result, f"Expected message '{expected_message}' was not received."
 
-    # Verify the configuration
-    serial_service.write("print uplink\n")
-    response = serial_service.wait_for_message(uplink)
+        # Verify the configuration
+        serial_service.write("print uplink\n")
+        response = serial_service.wait_for_message(uplink)
 
-    assert response, f"Uplink1 configuration mismatch or not set correctly. Expected: {uplink}"
+        assert response, f"Uplink1 configuration mismatch or not set correctly. Expected: {uplink}"
 
-    print("Uplink1 configuration with RS485 and custom settings completed successfully.")
+        logging.info("Uplink1 configuration with RS485 and custom settings completed successfully.")
+    except AssertionError as e:
+        logging.error(f"Test failed: {e}")
+        raise
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        raise
 
 
 def test_uplink1_rs232_custom_speed_n717(serial_service):
     """
     Test to verify the uplink1 configuration with RS232 and custom initial speed.
     """
-    print("Testing uplink1 configuration with RS232 and custom initial speed...")
-    serial_service.login_admin()
+    logging.info("Starting test_uplink1_rs232_custom_speed_n717")
+    try:
+        serial_service.login_admin()
 
-    # Set the uplink1 configuration
-    uplink = "rs232:8e1:2400,srv,tcp:8500,apap-bin"
-    serial_service.write(f"set uplink1 {uplink}\n")
+        # Set the uplink1 configuration
+        uplink = "rs232:8e1:2400,srv,tcp:8500,apap-bin"
+        serial_service.write(f"set uplink1 {uplink}\n")
 
-    serial_service.save()
-    serial_service.reset()
+        serial_service.save()
+        serial_service.reset()
 
-    serial_service.wait_for_message("Modul radiowy poprawnie wykryty i zainicjowany")
-    serial_service.login_admin()
-    serial_service.write("print uplink\n")
-    response = serial_service.wait_for_message(uplink)
+        serial_service.wait_for_message("Modul radiowy poprawnie wykryty i zainicjowany")
+        serial_service.login_admin()
 
-    assert response, f"Uplink1 configuration mismatch or not set correctly. Expected: {uplink}"
+        serial_service.write("print uplink\n")
+        response = serial_service.wait_for_message(uplink)
 
-    print("Uplink1 configuration with RS232 and custom initial speed completed successfully.")
+        assert response, f"Uplink1 configuration mismatch or not set correctly. Expected: {uplink}"
+
+        logging.info("Uplink1 configuration with RS232 and custom speed completed successfully.")
+    except AssertionError as e:
+        logging.error(f"Test failed: {e}")
+        raise
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        raise
 
 
 def test_uplink1_rs232_custom_framing_n717(serial_service):
-    #TODO: ONLY WORKS WITH APAP-BIN WHY THO?, TRANSPARENT NOT WORKING
-    print("Testing uplink1 configuration with RS232 and custom framing...")
-    serial_service.login_admin()
-    # Set the uplink1 configuration
-    uplink="rs232:8E1,srv,tcp:8500,apap-bin"
-    serial_service.write(f"set uplink1 {uplink}\n")
+    """
+    Test to verify the uplink1 configuration with RS232 and custom framing.
+    """
+    logging.info("Starting test_uplink1_rs232_custom_framing_n717")
+    try:
+        serial_service.login_admin()
 
-    serial_service.save()
-    serial_service.reset()
+        # Set the uplink1 configuration
+        uplink = "rs232:8E1,srv,tcp:8500,apap-bin"
+        serial_service.write(f"set uplink1 {uplink}\n")
 
-    serial_service.wait_for_message("Modul radiowy poprawnie wykryty i zainicjowany")
-    serial_service.login_admin()
+        serial_service.save()
+        serial_service.reset()
 
-    serial_service.write("print uplink\n")
-    response = serial_service.wait_for_message(uplink)
+        serial_service.wait_for_message("Modul radiowy poprawnie wykryty i zainicjowany")
+        serial_service.login_admin()
 
-    assert response, "Uplink1 configuration mismatch or not set correctly."
+        serial_service.write("print uplink\n")
+        response = serial_service.wait_for_message(uplink)
 
-    print("Uplink1 configuration with RS232 and custom framing completed successfully.")
+        assert response, "Uplink1 configuration mismatch or not set correctly."
+
+        logging.info("Uplink1 configuration with RS232 and custom framing completed successfully.")
+    except AssertionError as e:
+        logging.error(f"Test failed: {e}")
+        raise
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        raise

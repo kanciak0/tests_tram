@@ -20,14 +20,6 @@ def mock_service():
     yield mock_service
     mock_service.close()
 
-@pytest.fixture(scope='module')
-def config_manager(serial_service):
-    """
-    Fixture to initialize and provide the ConfigurationManager instance for the tests.
-    """
-    return ConfigurationManager(communicator=serial_service.communicator, service=serial_service,
-                                config_file='config.txt')
-
 
 @pytest.mark.parametrize("urc_value, expected_message", [
     ("2", "URC: 4"),
@@ -47,7 +39,7 @@ def test_mock_urc_with_parameters_n27(config_manager, serial_service, urc_value,
     serial_service.login_admin()
     serial_service.urc_with_parameters(urc_value)
 
-    result = serial_service.communicator.wait_for_message(expected_message)
+    result = serial_service.wait_for_message(expected_message)
 
     assert result, f"Expected URC response message '{expected_message}' was not received."
 
@@ -69,7 +61,7 @@ def test_set_radio_mode_with_parameters(config_manager, mock_service, radio_mode
     mock_service.mock_set_radio_mode(radio_mode)
 
     # Assuming that the command's output is captured similarly to the URC test
-    result = mock_service.communicator.wait_for_message(expected_response)
+    result = mock_service.wait_for_message(expected_response)
 
     assert result, f"Expected response message '{expected_response}' was not received for radio mode '{radio_mode}'."
 
@@ -92,6 +84,6 @@ def test_set_active_radio_with_parameters(mock_service, active_radio, expected_r
     mock_service.login_admin()
     mock_service.mock_set_active_radio(active_radio)
 
-    result = mock_service.communicator.wait_for_message(expected_response)
+    result = mock_service.wait_for_message(expected_response)
 
     assert result, f"Expected response message '{expected_response}' was not received for active radio '{active_radio}'."
