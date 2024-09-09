@@ -19,7 +19,7 @@ def serial_service(request):
     config_file = request.config.getoption("--serial-config")
     service = SerialService(config_file=config_file)
     yield service
-
+    service.ser.close()
 
 @pytest.mark.skip("Configuration not working")
 def test_uplink1_rs485_custom_n27(serial_service):

@@ -1,14 +1,14 @@
-INFO     root:test_apn_n27.py:72 Configuration saved to backup file: backup_logs\backup_config.txt
-INFO     root:test_apn_n27.py:125 Starting test_set_apn_name
-INFO     root:test_apn_n27.py:138 APN name test passed successfully.
-INFO     root:test_apn_n27.py:152 Starting test_set_apn_login
-INFO     root:test_apn_n27.py:166 APN login test passed successfully.
-INFO     root:test_apn_n27.py:180 Starting test_set_apn_password
-INFO     root:test_apn_n27.py:194 APN password test passed successfully.
-INFO     root:test_apn_n27.py:208 Starting test_set_apn_auth
-INFO     root:test_apn_n27.py:224 APN authentication method test passed successfully.
-INFO     root:test_apn_n27.py:238 Starting test_set_apn_tries
-INFO     root:test_apn_n27.py:254 APN tries parameter test passed successfully.
+INFO     root:test_apn_n27.py:71 Configuration saved to backup file: backup_logs\backup_config.txt
+INFO     root:test_apn_n27.py:124 Starting test_set_apn_name
+INFO     root:test_apn_n27.py:137 APN name test passed successfully.
+INFO     root:test_apn_n27.py:151 Starting test_set_apn_login
+INFO     root:test_apn_n27.py:165 APN login test passed successfully.
+INFO     root:test_apn_n27.py:179 Starting test_set_apn_password
+INFO     root:test_apn_n27.py:193 APN password test passed successfully.
+INFO     root:test_apn_n27.py:207 Starting test_set_apn_auth
+INFO     root:test_apn_n27.py:223 APN authentication method test passed successfully.
+INFO     root:test_apn_n27.py:237 Starting test_set_apn_tries
+INFO     root:test_apn_n27.py:253 APN tries parameter test passed successfully.
 INFO     root:test_general_n27.py:26 Starting test_ver_n27
 INFO     root:test_general_n27.py:32 Version information test passed successfully.
 INFO     root:test_general_n27.py:45 Starting test_hwver_n27
@@ -43,31 +43,24 @@ INFO     root:test_gsm_general_n27.py:230 Starting test_gsm_cellinfo_n27
 INFO     root:test_gsm_general_n27.py:237 GSM cell info test passed successfully.
 INFO     root:test_ip_n27.py:25 Starting test_ip_iface_n27
 INFO     root:test_ip_n27.py:44 IP interface test completed successfully.
-INFO     root:test_ip_n27.py:56 Starting test_ip_state_n27
-INFO     root:test_ip_n27.py:65 IP state test completed successfully.
-INFO     root:test_ip_n27.py:77 Starting test_ip_ping_n27 to 8.8.8.8
-INFO     root:test_ip_n27.py:91 Ping test to 8.8.8.8 completed successfully.
-INFO     root:test_radio_n27.py:28 Starting test_set_auto_radio_mode_n27
-ERROR    root:test_radio_n27.py:64 Test failed: Expected conf_bands=GSM900,GSM1800,LTE2100,LTE1800,LTE900,LTE800,LTE450B31, but got 57
-assert '57' == 'conf_bands=G...800,LTE450B31'
-  
-  - conf_bands=GSM900,GSM1800,LTE2100,LTE1800,LTE900,LTE800,LTE450B31
-  + 57
-INFO     root:test_radio_n27.py:75 Starting test_set_lte_radio_mode_n27
-INFO     root:test_radio_n27.py:110 Test for setting radio mode to LTE completed successfully.
-INFO     root:test_radio_n27.py:123 Starting test_set_gsm_radio_mode_n27
-INFO     root:test_radio_n27.py:158 Test for setting radio mode to GSM completed successfully.
-INFO     root:test_radio_n27.py:171 Starting test_set_pref_bands_to_lte_n27
-INFO     root:test_radio_n27.py:193 Pref bands are correctly set to pref_bands=LTE2100,LTE1800
-INFO     root:test_radio_n27.py:194 Test for setting preferred bands to LTE completed successfully.
-INFO     root:test_radio_n27.py:207 Starting test_set_pref_bands_to_2g_n27
-ERROR    root:test_radio_n27.py:232 Test failed: Expected pref_bands=GSM900,GSM1800, but got 58
-assert '58' == 'pref_bands=GSM900,GSM1800'
-  
-  - pref_bands=GSM900,GSM1800
-  + 58
-INFO     root:test_radio_n27.py:243 Starting test_tcp_port_change_n27
-INFO     root:test_radio_n27.py:261 Test for changing TCP port value completed successfully.
+INFO     root:test_ip_n27.py:57 Starting test_ip_state_n27
+INFO     root:test_ip_n27.py:66 IP state test completed successfully.
+INFO     root:test_ip_n27.py:78 Starting test_ip_ping_n27 to 8.8.8.8
+INFO     root:test_ip_n27.py:92 Ping test to 8.8.8.8 completed successfully.
+INFO     root:test_radio_n27.py:30 Starting test_set_auto_radio_mode_n27
+INFO     root:test_radio_n27.py:67 Test for setting radio mode to auto completed successfully.
+INFO     root:test_radio_n27.py:80 Starting test_set_lte_radio_mode_n27
+INFO     root:test_radio_n27.py:117 Test for setting radio mode to lte completed successfully.
+INFO     root:test_radio_n27.py:130 Starting test_set_gsm_radio_mode_n27
+INFO     root:test_radio_n27.py:167 Test for setting radio mode to lte completed successfully.
+INFO     root:test_radio_n27.py:180 Starting test_set_pref_bands_to_lte_n27
+INFO     root:test_radio_n27.py:202 Pref bands are correctly set to pref_bands=LTE2100,LTE1800
+INFO     root:test_radio_n27.py:203 Test for setting preferred bands to LTE completed successfully.
+INFO     root:test_radio_n27.py:216 Starting test_set_pref_bands_to_2g_n27
+INFO     root:test_radio_n27.py:238 Pref bands are correctly set to pref_bands=GSM900,GSM1800
+INFO     root:test_radio_n27.py:239 Test for setting preferred bands to 2G completed successfully.
+INFO     root:test_radio_n27.py:252 Starting test_tcp_port_change_n27
+INFO     root:test_radio_n27.py:270 Test for changing TCP port value completed successfully.
 INFO     root:test_uplink_n27.py:65 Starting test_uplink1_rs232_custom_speed_n27
 INFO     root:test_uplink_n27.py:84 Uplink1 configuration with RS232 and custom speed completed successfully.
 INFO     root:test_uplink_n27.py:97 Starting test_uplink1_rs232_custom_framing_n27
@@ -122,4 +115,26 @@ INFO     root:test_gsm_general_n717.py:196 Starting test_gsm_status_n717
 INFO     root:test_gsm_general_n717.py:203 GSM status test passed successfully.
 INFO     root:test_gsm_general_n717.py:216 Starting test_gsm_cellinfo_n717
 INFO     root:test_gsm_general_n717.py:223 GSM cell info test passed successfully.
-INFO     root:test_zmock.py:14 --------------------------------RESTORING CONFIGURATION----------------------------
+INFO     root:test_ip_n717.py:25 Starting test_ip_iface_n27
+INFO     root:test_ip_n717.py:44 IP interface test completed successfully.
+INFO     root:test_ip_n717.py:57 Starting test_ip_state_n27
+INFO     root:test_ip_n717.py:66 IP state test completed successfully.
+INFO     root:test_ip_n717.py:78 Starting test_ip_ping_n27 to 8.8.8.8
+INFO     root:test_ip_n717.py:92 Ping test to 8.8.8.8 completed successfully.
+INFO     root:test_radio_n717.py:23 Starting test_set_auto_radio_mode_n27
+INFO     root:test_radio_n717.py:60 Test for setting radio mode to auto completed successfully.
+INFO     root:test_radio_n717.py:73 Starting test_set_lte_radio_mode_n717
+INFO     root:test_radio_n717.py:110 Test for setting radio mode to lte completed successfully.
+INFO     root:test_radio_n717.py:123 Starting test_set_gsm_radio_mode_n717
+INFO     root:test_radio_n717.py:160 Test for setting radio mode to lte completed successfully.
+INFO     root:test_radio_n717.py:170 Testing setting preferred bands to GSM (2G)...
+INFO     root:test_radio_n717.py:187 Preferred bands correctly set to pref_bands=GSM900,GSM1800
+INFO     root:test_radio_n717.py:188 Test for setting preferred bands to GSM (2G) completed successfully.
+INFO     root:test_radio_n717.py:192 Testing changing TCP port value...
+INFO     root:test_radio_n717.py:196 Changing TCP port to 1234
+INFO     root:test_radio_n717.py:211 Test for changing TCP port value completed successfully.
+INFO     root:test_uplink_n717.py:64 Starting test_uplink1_rs232_custom_speed_n717
+INFO     root:test_uplink_n717.py:83 Uplink1 configuration with RS232 and custom speed completed successfully.
+INFO     root:test_uplink_n717.py:96 Starting test_uplink1_rs232_custom_framing_n717
+INFO     root:test_uplink_n717.py:115 Uplink1 configuration with RS232 and custom framing completed successfully.
+INFO     root:test_zmock.py:14 --------------------------------RESTORING CONFIGURATION--------------------------------

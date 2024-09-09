@@ -72,8 +72,8 @@ def test_gsm_band_n717(gsm_service):
 
         if not result:
             logging.warning("No expected band messages received. Checking APN and PIN.")
-            expected_apn_name = "vpn.static.pl"
-            pin_value = '1234'
+            expected_apn_name = gsm_service.get_apn_name()
+            pin_value = gsm_service.get_pin()
             gsm_service.write(f"set apn_name {expected_apn_name}\n")
             gsm_service.save()
             gsm_service.reset()

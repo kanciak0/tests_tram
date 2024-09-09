@@ -49,6 +49,7 @@ def test_ip_iface_n27(serial_service):
         logging.error(f"An unexpected error occurred: {e}")
         raise
 
+
 def test_ip_state_n27(serial_service):
     """
     Test to verify IP state.
@@ -229,6 +230,7 @@ def test_ping_tout_n27(serial_service, timeout=1000):
         logging.error(f"An unexpected error occurred: {e}")
         raise
 
+
 @pytest.mark.skip(reason="Deprecated for this firmware version.")
 def test_ping_ratio_n27(serial_service, ratio=75):
     """
@@ -247,6 +249,7 @@ def test_ping_ratio_n27(serial_service, ratio=75):
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         raise
+
 
 @pytest.mark.skip(reason="Deprecated for this firmware version.")
 def test_ping_delay_n27(serial_service, delay=90):

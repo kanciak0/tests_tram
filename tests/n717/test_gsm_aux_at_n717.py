@@ -56,7 +56,7 @@ def gsm_setup(gsm_service):
 
         if status_value <= 3:
             logging.info("PIN handling is required for GSM setup")
-            pin_value = '1234'
+            pin_value = gsm_service.get_pin()
             pin_check_command = 'print pin\n'
             pin_set_command = f'set pin {pin_value}\n'
             pin_pattern = r'pin=\s?\d{4}'

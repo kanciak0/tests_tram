@@ -241,6 +241,7 @@ class SerialService(SerialCommunicator):
         os.remove(config_file)
         print(f"Configuration file {config_file} deleted.")
 
+
 class GSMService(SerialService):
     def __init__(self, config_file='config_file.txt'):
         super().__init__(config_file)

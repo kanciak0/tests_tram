@@ -8,6 +8,7 @@ from datetime import datetime
 
 class SerialCommunicator:
     def __init__(self, config_file='config_file.txt', log_dir='logs'):
+        self.config_file = config_file
         config = configparser.ConfigParser()
         config.read(config_file)
 
@@ -18,6 +19,9 @@ class SerialCommunicator:
         self.baudrate = config.getint('serial', 'baudrate')
         self.timeout = config.getfloat('serial', 'timeout')
         self.password = config.get('serial', 'password')
+
+        self.pin = config.get('serial', 'pin')
+        self.apn_name = config.get('serial', 'apn_name')
 
         self.ser = serial.Serial(self.port, baudrate=self.baudrate, timeout=self.timeout)
 
@@ -32,6 +36,17 @@ class SerialCommunicator:
 
         self.reading_thread = None
         self.stop_reading = threading.Event()
+
+    def get_pin(self):
+        """Fetches the PIN dynamically from the config file each time."""
+        config = configparser.ConfigParser()
+        config.read(self.config_file)
+        return config.get('serial', 'pin')
+
+    def get_apn_name(self):
+        config = configparser.ConfigParser()
+        config.read(self.config_file)
+        return config.get('serial', 'apn_name')
 
     def write(self, command):
         self.ser.write(command.encode())
@@ -53,7 +68,6 @@ class SerialCommunicator:
                 entry = entry.strip()
                 if entry and not self._is_unwanted_entry(entry):
                     f.write(f"{timestamp} - {entry}\n")
-
 
     def _is_unwanted_entry(self, entry):
         """Determine if the log entry should be ignored."""
@@ -96,6 +110,34 @@ class SerialCommunicator:
                 for message in expected_messages:
                     if message in buffer:
                         return True
+
+    def wait_for_all_expected_messages(self, expected_messages, timeout=45):
+        """
+        Waits for all the expected messages to be present in the buffer within the specified timeout.
+
+        :param expected_messages: List of messages that should be present in the buffer.
+        :param timeout: Time to wait for all messages to appear.
+        :return: True if all expected messages are found, False otherwise.
+        """
+        start_time = time.time()
+        buffer = ""
+        expected_messages_set = set(expected_messages)
+        received_messages_set = set()
+
+        while True:
+            if time.time() - start_time > timeout:
+                return False
+
+            if self.ser.in_waiting > 0:
+                data = self.read()
+                buffer += data
+
+                # Check for each expected message in the buffer
+                for message in expected_messages_set:
+                    if message in buffer:
+                        received_messages_set.add(message)
+                        if received_messages_set == expected_messages_set:
+                            return True
 
     def is_debug_mode(self):
         self.ser.write(b'\n\r')

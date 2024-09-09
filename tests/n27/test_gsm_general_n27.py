@@ -84,8 +84,8 @@ def test_gsm_band_n27(gsm_service):
         result = gsm_service.wait_for_one_of_expected_messages(expected_messages, timeout=5)
 
         if not result:
-            expected_apn_name = "vpn.static.pl"
-            pin_value = '1234'
+            expected_apn_name = gsm_service.get_apn_name()
+            pin_value = gsm_service.get_pin()
             pin_check_command = 'print pin\n'
             pin_set_command = f'set pin {pin_value}\n'
             # Handle the "???" case by checking and setting APN and PIN

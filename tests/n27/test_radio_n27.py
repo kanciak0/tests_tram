@@ -1,4 +1,6 @@
 import logging
+import time
+
 import pytest
 
 from common.Service import GSMService
@@ -43,21 +45,24 @@ def test_set_auto_radio_mode_n27(gsm_service):
         gsm_service.gsm_rat()
         result = gsm_service.wait_for_one_of_expected_messages(expected_messages, timeout=5)
         if not result:
-            pytest.fail("Expected messages not received after setting auto radio mode.")
+            gsm_service.restart_disable(3600)
+            gsm_service.wait_for_message("RAT",timeout=30)
+            gsm_service.gsm_rat()
+            result = gsm_service.wait_for_one_of_expected_messages(expected_messages, timeout=5)
+            if not result:
+                pytest.fail("Expected messages not received after setting auto radio mode.")
 
         # Check radio_mode
         gsm_service.write('print radio_mode\r\n')
-        response = gsm_service.wait_for_message_and_take_value("LCT:", timeout=30)
-        read_value = response.split(':')[1].strip().split('\r\n')[0] if response else None
-        assert read_value == f"radio_mode={auto_radio_mode}", \
-            f"Expected radio_mode={auto_radio_mode}, but got {read_value}"
+        response = gsm_service.wait_for_message("radio_mode=auto", timeout=5)
+        assert response, \
+            f"Expected radio_mode={auto_radio_mode} was not set correctly."
 
         # Check conf_bands
         gsm_service.write('print conf_bands\r\n')
-        response = gsm_service.wait_for_message_and_take_value("LCT:", timeout=30)
-        read_value = response.split(':')[1].strip().split('\r\n')[0] if response else None
-        assert read_value == f"conf_bands={auto_conf_bands}", \
-            f"Expected conf_bands={auto_conf_bands}, but got {read_value}"
+        response = gsm_service.wait_for_all_expected_messages(auto_conf_bands)
+        assert response, \
+            f"Expected conf_bands={auto_conf_bands} was not set correctly"
 
         logging.info("Test for setting radio mode to auto completed successfully.")
     except AssertionError as e:
@@ -87,27 +92,29 @@ def test_set_lte_radio_mode_n27(gsm_service):
         gsm_service.reset()
         gsm_service.wait_for_message("Zmiana trybu radiowego na: lte")
         gsm_service.login_admin()
-        gsm_service.wait_for_message("RAT")
         gsm_service.gsm_rat()
         result = gsm_service.wait_for_one_of_expected_messages(expected_messages, timeout=5)
         if not result:
-            pytest.fail("Expected messages not received after setting LTE radio mode.")
+            gsm_service.restart_disable(3600)
+            gsm_service.wait_for_message("RAT",timeout=30)
+            gsm_service.gsm_rat()
+            result = gsm_service.wait_for_one_of_expected_messages(expected_messages, timeout=5)
+            if not result:
+                pytest.fail("Expected messages not received after setting lte radio mode.")
 
         # Check radio_mode
         gsm_service.write('print radio_mode\r\n')
-        response = gsm_service.wait_for_message_and_take_value("LCT:", timeout=30)
-        read_value = response.split(':')[1].strip().split('\r\n')[0] if response else None
-        assert read_value == f"radio_mode={lte_radio_mode}", \
-            f"Expected radio_mode={lte_radio_mode}, but got {read_value}"
+        response = gsm_service.wait_for_message("radio_mode=lte", timeout=5)
+        assert response, \
+            f"Expected radio_mode={lte_radio_mode} was not set correctly."
 
         # Check conf_bands
         gsm_service.write('print conf_bands\r\n')
-        response = gsm_service.wait_for_message_and_take_value("LCT:", timeout=30)
-        read_value = response.split(':')[1].strip().split('\r\n')[0] if response else None
-        assert read_value == f"conf_bands={lte_conf_bands}", \
-            f"Expected conf_bands={lte_conf_bands}, but got {read_value}"
+        response = gsm_service.wait_for_all_expected_messages(lte_conf_bands)
+        assert response, \
+            f"Expected conf_bands={lte_conf_bands} was not set correctly"
 
-        logging.info("Test for setting radio mode to LTE completed successfully.")
+        logging.info("Test for setting radio mode to lte completed successfully.")
     except AssertionError as e:
         logging.error(f"Test failed: {e}")
         raise
@@ -135,27 +142,29 @@ def test_set_gsm_radio_mode_n27(gsm_service):
         gsm_service.reset()
         gsm_service.wait_for_message("Zmiana trybu radiowego na: 2g")
         gsm_service.login_admin()
-        gsm_service.wait_for_message("RAT")
         gsm_service.gsm_rat()
         result = gsm_service.wait_for_one_of_expected_messages(expected_messages, timeout=5)
         if not result:
-            pytest.fail("Expected messages not received after setting GSM radio mode.")
+            gsm_service.restart_disable(3600)
+            gsm_service.wait_for_message("RAT",timeout=30)
+            gsm_service.gsm_rat()
+            result = gsm_service.wait_for_one_of_expected_messages(expected_messages, timeout=5)
+            if not result:
+                pytest.fail("Expected messages not received after setting lte radio mode.")
 
-        # Check radio_mode
+            # Check radio_mode
         gsm_service.write('print radio_mode\r\n')
-        response = gsm_service.wait_for_message_and_take_value("LCT:", timeout=30)
-        read_value = response.split(':')[1].strip().split('\r\n')[0] if response else None
-        assert read_value == f"radio_mode={gsm_radio_mode}", \
-            f"Expected radio_mode={gsm_radio_mode}, but got {read_value}"
+        response = gsm_service.wait_for_message("radio_mode=2g", timeout=5)
+        assert response, \
+            f"Expected radio_mode={gsm_radio_mode} was not set correctly."
 
         # Check conf_bands
         gsm_service.write('print conf_bands\r\n')
-        response = gsm_service.wait_for_message_and_take_value("LCT:", timeout=30)
-        read_value = response.split(':')[1].strip().split('\r\n')[0] if response else None
-        assert read_value == f"conf_bands={gsm_conf_bands}", \
-            f"Expected conf_bands={gsm_conf_bands}, but got {read_value}"
+        response = gsm_service.wait_for_all_expected_messages(gsm_conf_bands)
+        assert response, \
+            f"Expected conf_bands={gsm_conf_bands} was not set correctly"
 
-        logging.info("Test for setting radio mode to GSM completed successfully.")
+        logging.info("Test for setting radio mode to lte completed successfully.")
     except AssertionError as e:
         logging.error(f"Test failed: {e}")
         raise

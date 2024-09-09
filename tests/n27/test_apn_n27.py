@@ -1,5 +1,4 @@
 import os
-from datetime import datetime
 
 import pytest
 import logging
@@ -125,7 +124,7 @@ def test_set_apn_name_n27(apn_service):
     logging.info("Starting test_set_apn_name")
     try:
         apn_service.login_admin()
-        apn_name = "vpn.static.pl"
+        apn_name = apn_service.get_apn_name()
         apn_service.set_apn_name(apn_name)
 
         # Verify the APN name was set correctly

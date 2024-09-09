@@ -7,6 +7,8 @@ logging.basicConfig(level=logging.INFO,
                     datefmt='%Y-%m-%d %H:%M:%S')
 
 # Global fixture that runs once at the start of the session
+
+
 @pytest.fixture(scope='session', autouse=True)
 def log_configuration():
     logging.info("Saving current configuration:")
