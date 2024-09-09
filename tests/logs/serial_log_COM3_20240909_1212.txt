@@ -1,0 +1,405 @@
+2024-09-09 12:12:04.253 - gsm.ver
+2024-09-09 12:12:04.253 - LCT: Typ modulu: N27 LTE cat. M1
+2024-09-09 12:12:04.253 - LCT: Firmware  : N27-Q04-STD-OP-008-T20240223
+2024-09-09 12:12:04.507 - set apn_name vpn.static.pl
+2024-09-09 12:12:04.507 - LCT: OK
+2024-09-09 12:12:04.507 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:04.507 - LCT:  apn_login=ppp
+2024-09-09 12:12:04.507 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:04.507 - LCT:  apn_auth=pap
+2024-09-09 12:12:04.507 - LCT:  apn_tries=8
+2024-09-09 12:12:04.763 - set apn_login ppp
+2024-09-09 12:12:04.763 - LCT: OK
+2024-09-09 12:12:04.763 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:04.763 - LCT:  apn_login=ppp
+2024-09-09 12:12:04.763 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:04.763 - LCT:  apn_auth=pap
+2024-09-09 12:12:04.763 - LCT:  apn_tries=8
+2024-09-09 12:12:05.012 - set apn_passwd ppp
+2024-09-09 12:12:05.012 - LCT: OK
+2024-09-09 12:12:05.012 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:05.012 - LCT:  apn_login=ppp
+2024-09-09 12:12:05.012 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:05.012 - LCT:  apn_auth=pap
+2024-09-09 12:12:05.012 - LCT:  apn_tries=8
+2024-09-09 12:12:05.272 - set apn_auth pap
+2024-09-09 12:12:05.272 - LCT: OK
+2024-09-09 12:12:05.272 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:05.272 - LCT:  apn_login=ppp
+2024-09-09 12:12:05.272 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:05.272 - LCT:  apn_auth=pap
+2024-09-09 12:12:05.272 - LCT:  apn_tries=8
+2024-09-09 12:12:05.529 - set apn_tries 8
+2024-09-09 12:12:05.529 - LCT: OK
+2024-09-09 12:12:05.529 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:05.529 - LCT:  apn_login=ppp
+2024-09-09 12:12:05.529 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:05.529 - LCT:  apn_auth=pap
+2024-09-09 12:12:05.529 - LCT:  apn_tries=8
+2024-09-09 12:12:05.640 - ver
+2024-09-09 12:12:05.640 - LCT: TRAM APATOR, version 1.169.0
+2024-09-09 12:12:05.750 - hwver
+2024-09-09 12:12:05.750 - LCT:  TRAM v7Q LTE cat. 1/LTE cat. M1/GSM
+2024-09-09 12:12:05.908 - urc 1
+2024-09-09 12:12:05.908 - LCT: URC: 1
+2024-09-09 12:12:06.059 - urc 0
+2024-09-09 12:12:06.059 - LCT: URC: 0
+2024-09-09 12:12:06.209 - config.info
+2024-09-09 12:12:06.209 - config.backup=0
+2024-09-09 12:12:06.209 - config.changed=1
+2024-09-09 12:12:06.209 - config.progress=0
+2024-09-09 12:12:06.209 - config.factory.valid=0
+2024-09-09 12:12:06.209 - LCT: OK
+2024-09-09 12:12:06.315 - urc
+2024-09-09 12:12:06.315 - LCT: URC: 0
+2024-09-09 12:12:06.468 - board.serial.show
+2024-09-09 12:12:06.468 - BOARD SERIAL 32400003
+2024-09-09 12:12:06.621 - gsm.ver
+2024-09-09 12:12:06.621 - LCT: Typ modulu: N27 LTE cat. M1
+2024-09-09 12:12:06.621 - LCT: Firmware  : N27-Q04-STD-OP-008-T20240223
+2024-09-09 12:12:06.771 - gsm.ids
+2024-09-09 12:12:06.771 - IMEI          : 861603072426330
+2024-09-09 12:12:06.771 - IMSI          : 260036449475372
+2024-09-09 12:12:06.771 - SIMID         : 8948032116494753724
+2024-09-09 12:12:06.771 - MSISDN        :
+2024-09-09 12:12:06.924 - gsm.band
+2024-09-09 12:12:06.924 - LCT:  LTE800
+2024-09-09 12:12:07.073 - gsm.rssi
+2024-09-09 12:12:07.073 - RSSI: -73 dBm
+2024-09-09 12:12:07.073 - BER: 99 (raw)
+2024-09-09 12:12:07.223 - gsm.rssiex
+2024-09-09 12:12:07.223 - Temp:    RSSI: -073 dBm, BER: 99 (raw)
+2024-09-09 12:12:07.223 - BCCH:    RSSI: -073 dBm, BER: 99 (raw)
+2024-09-09 12:12:07.223 - BCCHAvg: RSSI: -071 dBm, BER: 0 (raw)
+2024-09-09 12:12:07.374 - gsm.regstate
+2024-09-09 12:12:07.374 - Siec GSM: 1 [zarejestrowany w swojej sieci]
+2024-09-09 12:12:07.374 - Siec GPRS: 1 [zarejestrowany w swojej sieci]
+2024-09-09 12:12:07.374 - Operator: Orange
+2024-09-09 12:12:07.516 - gsm.state
+2024-09-09 12:12:07.516 - Stan kanalu sterujacego: 5 [gotowy do pracy]
+2024-09-09 12:12:07.653 - LCT: Radio status: 1 [OK]
+2024-09-09 12:12:07.653 - LCT: Ostatni blad krytyczny: 0000
+2024-09-09 12:12:07.803 - gsm.cellinfo
+2024-09-09 12:12:07.803 - LAC   : 00000083
+2024-09-09 12:12:07.803 - CI    : 02241e10
+2024-09-09 12:12:07.803 - Act   : 8 (LTE.M1)
+2024-09-09 12:12:07.803 - RAC   : 00
+2024-09-09 12:12:07.803 - UARFCN: 6200
+2024-09-09 12:12:07.957 - ip.iface
+2024-09-09 12:12:07.957 - LCT: Local IP: 79.162.233.243
+2024-09-09 12:12:07.957 - LCT: Remote IP: 79.162.233.244
+2024-09-09 12:12:07.957 - LCT: Netmask: 255.255.255.248
+2024-09-09 12:12:07.957 - LCT: DNS1: 194.204.159.1
+2024-09-09 12:12:07.957 - LCT: DNS2: 194.204.152.34
+2024-09-09 12:12:08.108 - ip.state
+2024-09-09 12:12:08.108 - LCT: Uplink task: task_Running
+2024-09-09 12:12:08.108 - LCT: WAN link: connected
+2024-09-09 12:12:08.260 - ip.ping 8.8.8.8
+2024-09-09 12:12:08.260 - PING: resolved: 8.8.8.8 -> 8.8.8.8
+2024-09-09 12:12:08.463 - PING: recv from 8.8.8.8: icmp_seq=0 time=222 ms ttl=6
+2024-09-09 12:12:13.872 - PING: Done
+2024-09-09 12:12:14.322 - gsm.ver
+2024-09-09 12:12:14.322 - LCT: Typ modulu: N27 LTE cat. M1
+2024-09-09 12:12:14.322 - LCT: Firmware  : N27-Q04-STD-OP-008-T20240223
+2024-09-09 12:12:14.574 - set apn_name vpn.static.pl
+2024-09-09 12:12:14.574 - LCT: OK
+2024-09-09 12:12:14.574 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:14.574 - LCT:  apn_login=ppp
+2024-09-09 12:12:14.574 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:14.574 - LCT:  apn_auth=pap
+2024-09-09 12:12:14.574 - LCT:  apn_tries=8
+2024-09-09 12:12:14.816 - set apn_login ppp
+2024-09-09 12:12:14.816 - LCT: OK
+2024-09-09 12:12:14.816 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:14.816 - LCT:  apn_login=ppp
+2024-09-09 12:12:14.816 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:14.816 - LCT:  apn_auth=pap
+2024-09-09 12:12:14.816 - LCT:  apn_tries=8
+2024-09-09 12:12:15.059 - set apn_passwd ppp
+2024-09-09 12:12:15.059 - LCT: OK
+2024-09-09 12:12:15.059 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:15.059 - LCT:  apn_login=ppp
+2024-09-09 12:12:15.059 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:15.059 - LCT:  apn_auth=pap
+2024-09-09 12:12:15.059 - LCT:  apn_tries=8
+2024-09-09 12:12:15.299 - set apn_auth pap
+2024-09-09 12:12:15.299 - LCT: OK
+2024-09-09 12:12:15.299 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:15.299 - LCT:  apn_login=ppp
+2024-09-09 12:12:15.299 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:15.299 - LCT:  apn_auth=pap
+2024-09-09 12:12:15.299 - LCT:  apn_tries=8
+2024-09-09 12:12:15.556 - set apn_tries 8
+2024-09-09 12:12:15.556 - LCT: OK
+2024-09-09 12:12:15.556 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:15.556 - LCT:  apn_login=ppp
+2024-09-09 12:12:15.556 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:15.556 - LCT:  apn_auth=pap
+2024-09-09 12:12:15.556 - LCT:  apn_tries=8
+2024-09-09 12:12:15.664 - ver
+2024-09-09 12:12:15.664 - LCT: TRAM APATOR, version 1.169.0
+2024-09-09 12:12:15.770 - hwver
+2024-09-09 12:12:15.770 - LCT:  TRAM v7Q LTE cat. 1/LTE cat. M1/GSM
+2024-09-09 12:12:15.925 - urc 1
+2024-09-09 12:12:15.925 - LCT: URC: 1
+2024-09-09 12:12:16.075 - urc 0
+2024-09-09 12:12:16.075 - LCT: URC: 0
+2024-09-09 12:12:16.223 - config.info
+2024-09-09 12:12:16.223 - config.backup=0
+2024-09-09 12:12:16.223 - config.changed=1
+2024-09-09 12:12:16.223 - config.progress=0
+2024-09-09 12:12:16.223 - config.factory.valid=0
+2024-09-09 12:12:16.223 - LCT: OK
+2024-09-09 12:12:16.328 - urc
+2024-09-09 12:12:16.328 - LCT: URC: 0
+2024-09-09 12:12:16.480 - board.serial.show
+2024-09-09 12:12:16.480 - BOARD SERIAL 32400003
+2024-09-09 12:12:16.631 - gsm.ver
+2024-09-09 12:12:16.631 - LCT: Typ modulu: N27 LTE cat. M1
+2024-09-09 12:12:16.631 - LCT: Firmware  : N27-Q04-STD-OP-008-T20240223
+2024-09-09 12:12:16.780 - gsm.ids
+2024-09-09 12:12:16.780 - IMEI          : 861603072426330
+2024-09-09 12:12:16.780 - IMSI          : 260036449475372
+2024-09-09 12:12:16.780 - SIMID         : 8948032116494753724
+2024-09-09 12:12:16.780 - MSISDN        :
+2024-09-09 12:12:16.933 - gsm.band
+2024-09-09 12:12:16.933 - LCT:  LTE800
+2024-09-09 12:12:17.070 - gsm.rssi
+2024-09-09 12:12:17.070 - RSSI: -71 dBm
+2024-09-09 12:12:17.070 - BER: 99 (raw)
+2024-09-09 12:12:17.220 - gsm.rssiex
+2024-09-09 12:12:17.220 - Temp:    RSSI: -071 dBm, BER: 99 (raw)
+2024-09-09 12:12:17.220 - BCCH:    RSSI: -071 dBm, BER: 99 (raw)
+2024-09-09 12:12:17.220 - BCCHAvg: RSSI: -071 dBm, BER: 0 (raw)
+2024-09-09 12:12:17.357 - gsm.regstate
+2024-09-09 12:12:17.357 - Siec GSM: 1 [zarejestrowany w swojej sieci]
+2024-09-09 12:12:17.357 - Siec GPRS: 1 [zarejestrowany w swojej sieci]
+2024-09-09 12:12:17.357 - Operator: Orange
+2024-09-09 12:12:17.509 - gsm.state
+2024-09-09 12:12:17.509 - Stan kanalu sterujacego: 5 [gotowy do pracy]
+2024-09-09 12:12:38.155 - LCT: Typ modulu: N27 LTE cat. M1
+2024-09-09 12:12:38.155 - LCT: Firmware  : N27-Q04-STD-OP-008-T20240223
+2024-09-09 12:12:38.408 - set apn_name vpn.static.pl
+2024-09-09 12:12:38.408 - LCT: OK
+2024-09-09 12:12:38.408 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:38.408 - LCT:  apn_login=ppp
+2024-09-09 12:12:38.408 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:38.408 - LCT:  apn_auth=pap
+2024-09-09 12:12:38.408 - LCT:  apn_tries=8
+2024-09-09 12:12:38.647 - set apn_login ppp
+2024-09-09 12:12:38.647 - LCT: OK
+2024-09-09 12:12:38.647 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:38.647 - LCT:  apn_login=ppp
+2024-09-09 12:12:38.647 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:38.647 - LCT:  apn_auth=pap
+2024-09-09 12:12:38.647 - LCT:  apn_tries=8
+2024-09-09 12:12:38.903 - set apn_passwd ppp
+2024-09-09 12:12:38.903 - LCT: OK
+2024-09-09 12:12:38.903 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:38.903 - LCT:  apn_login=ppp
+2024-09-09 12:12:38.903 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:38.903 - LCT:  apn_auth=pap
+2024-09-09 12:12:38.903 - LCT:  apn_tries=8
+2024-09-09 12:12:39.146 - set apn_auth pap
+2024-09-09 12:12:39.146 - LCT: OK
+2024-09-09 12:12:39.146 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:39.146 - LCT:  apn_login=ppp
+2024-09-09 12:12:39.146 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:39.146 - LCT:  apn_auth=pap
+2024-09-09 12:12:39.146 - LCT:  apn_tries=8
+2024-09-09 12:12:39.405 - set apn_tries 8
+2024-09-09 12:12:39.405 - LCT: OK
+2024-09-09 12:12:39.405 - LCT:  apn_name=vpn.static.pl
+2024-09-09 12:12:39.405 - LCT:  apn_login=ppp
+2024-09-09 12:12:39.405 - LCT:  apn_passwd=ppp
+2024-09-09 12:12:39.405 - LCT:  apn_auth=pap
+2024-09-09 12:12:39.405 - LCT:  apn_tries=8
+2024-09-09 12:12:39.513 - ver
+2024-09-09 12:12:39.513 - LCT: TRAM APATOR, version 1.169.0
+2024-09-09 12:12:39.620 - hwver
+2024-09-09 12:12:39.620 - LCT:  TRAM v7Q LTE cat. 1/LTE cat. M1/GSM
+2024-09-09 12:12:39.771 - urc 1
+2024-09-09 12:12:39.771 - LCT: URC: 1
+2024-09-09 12:12:39.922 - urc 0
+2024-09-09 12:12:39.922 - LCT: URC: 0
+2024-09-09 12:12:40.071 - config.info
+2024-09-09 12:12:40.071 - config.backup=0
+2024-09-09 12:12:40.071 - config.changed=1
+2024-09-09 12:12:40.071 - config.progress=0
+2024-09-09 12:12:40.071 - config.factory.valid=0
+2024-09-09 12:12:40.071 - LCT: OK
+2024-09-09 12:12:40.175 - urc
+2024-09-09 12:12:40.175 - LCT: URC: 0
+2024-09-09 12:12:40.311 - board.serial.show
+2024-09-09 12:12:40.311 - BOARD SERIAL 32400003
+2024-09-09 12:12:40.462 - gsm.ver
+2024-09-09 12:12:40.462 - LCT: Typ modulu: N27 LTE cat. M1
+2024-09-09 12:12:40.462 - LCT: Firmware  : N27-Q04-STD-OP-008-T20240223
+2024-09-09 12:12:40.612 - gsm.ids
+2024-09-09 12:12:40.612 - IMEI          : 861603072426330
+2024-09-09 12:12:40.612 - IMSI          : 260036449475372
+2024-09-09 12:12:40.612 - SIMID         : 8948032116494753724
+2024-09-09 12:12:40.612 - MSISDN        :
+2024-09-09 12:12:40.764 - gsm.band
+2024-09-09 12:12:40.764 - LCT:  LTE800
+2024-09-09 12:12:40.916 - gsm.rssi
+2024-09-09 12:12:40.916 - RSSI: -73 dBm
+2024-09-09 12:12:40.916 - BER: 99 (raw)
+2024-09-09 12:12:41.065 - gsm.rssiex
+2024-09-09 12:12:41.065 - Temp:    RSSI: -073 dBm, BER: 99 (raw)
+2024-09-09 12:12:41.065 - BCCH:    RSSI: -073 dBm, BER: 99 (raw)
+2024-09-09 12:12:41.065 - BCCHAvg: RSSI: -073 dBm, BER: 0 (raw)
+2024-09-09 12:12:41.200 - gsm.regstate
+2024-09-09 12:12:41.200 - Siec GSM: 1 [zarejestrowany w swojej sieci]
+2024-09-09 12:12:41.200 - Siec GPRS: 1 [zarejestrowany w swojej sieci]
+2024-09-09 12:12:41.200 - Operator: Orange
+2024-09-09 12:12:41.336 - gsm.state
+2024-09-09 12:12:41.336 - Stan kanalu sterujacego: 5 [gotowy do pracy]
+2024-09-09 12:12:41.486 - gsm.status
+2024-09-09 12:12:41.486 - LCT: Radio status: 1 [OK]
+2024-09-09 12:12:41.486 - LCT: Ostatni blad krytyczny: 0000
+2024-09-09 12:12:41.638 - gsm.cellinfo
+2024-09-09 12:12:41.638 - LAC   : 00000083
+2024-09-09 12:12:41.638 - CI    : 02241e10
+2024-09-09 12:12:41.638 - Act   : 8 (LTE.M1)
+2024-09-09 12:12:41.638 - RAC   : 00
+2024-09-09 12:12:41.638 - UARFCN: 6200
+2024-09-09 12:12:41.774 - ip.iface
+2024-09-09 12:12:41.774 - LCT: Local IP: 79.162.233.243
+2024-09-09 12:12:41.774 - LCT: Remote IP: 79.162.233.244
+2024-09-09 12:12:41.774 - LCT: Netmask: 255.255.255.248
+2024-09-09 12:12:41.774 - LCT: DNS1: 194.204.159.1
+2024-09-09 12:12:41.774 - LCT: DNS2: 194.204.152.34
+2024-09-09 12:12:41.924 - ip.state
+2024-09-09 12:12:41.924 - LCT: Uplink task: task_Running
+2024-09-09 12:12:41.924 - LCT: WAN link: connected
+2024-09-09 12:12:42.075 - ip.ping 8.8.8.8
+2024-09-09 12:12:42.075 - PING: resolved: 8.8.8.8 -> 8.8.8.8
+2024-09-09 12:12:42.125 - PING: recv from 8.8.8.8: icmp_seq=0 time=74 ms ttl=6
+2024-09-09 12:12:43.327 - PING: recv from 8.8.8.8: icmp_seq=1 time=74 ms ttl=6
+2024-09-09 12:12:44.518 - PING: recv from 8.8.8.8: icmp_seq=2 time=74 ms ttl=6
+2024-09-09 12:12:45.710 - PING: recv from 8.8.8.8: icmp_seq=3 time=80 ms ttl=6
+2024-09-09 12:12:46.918 - PING: recv from 8.8.8.8: icmp_seq=4 time=82 ms ttl=6
+2024-09-09 12:12:48.042 - PING: Done
+2024-09-09 12:12:48.409 - set radio_mode auto
+2024-09-09 12:12:48.409 - LCT: OK
+2024-09-09 12:12:48.513 - LCT: OK
+2024-09-09 12:12:48.513 - LCT: OK
+2024-09-09 12:12:48.513 - INF010[3]: Restart w ciagu 3 s
+2024-09-09 12:12:54.190 - SDK VER: N27-Q04-STD-SCOM-SDK-V2.1.6-T20240223
+2024-09-09 12:12:54.190 - MODEL ID: N27
+2024-09-09 12:12:54.190 - MANUFACTURE: NEOWAY
+2024-09-09 12:12:54.190 - BOARD SERIAL 32400003
+2024-09-09 12:12:54.190 - PCB SERIAL 2240B2240324100003
+2024-09-09 12:12:54.190 - MMMMMMMMMM
+2024-09-09 12:12:54.190 - MMMMMMMMMM      MMM
+2024-09-09 12:12:54.190 - MMMMMMMMMMM   MMM
+2024-09-09 12:12:54.510 - M
+2024-09-09 12:12:54.510 - MMMMMMMMMMMMMMM
+2024-09-09 12:12:54.510 - MMMMMMMMMMMMMM
+2024-09-09 12:12:54.510 - MMMMMMMMMMMM
+2024-09-09 12:12:54.782 - MMMMMMMMMMM
+2024-09-09 12:12:54.782 - MMMMMMMMMM     MMMMMMMMM        MMMMMMMM MMMMMMMMMMMMM
+2024-09-09 12:12:54.782 - MMMMMMMMMM     MMMMMMMMMMMM   MMMMMMMMMMM MMMMMMMMMMMMM
+2024-09-09 12:12:54.782 - MM
+2024-09-09 12:12:55.053 - MMMMMMMM       MMMM   MMMMM  MMMMM            MMMM
+2024-09-09 12:12:55.053 - MMMMMMMMMM       MMMMM   MMMMM MMMMM            MMMMM
+2024-09-09 12:12:55.053 - MMMMMMMMMM         MMMMM   MMMMM MMMMM   MMMM     MMMMM
+2024-09-09 12:12:55.053 - MMMMMMMMMM          MMMMMMMMMM
+2024-09-09 12:12:55.190 - M   MMMMMMMMMMM     MMMMM
+2024-09-09 12:12:55.190 - MMMMMMMMMM          MMMMMMMMMM       MMMMMMMMM     MMMM
+2024-09-09 12:12:55.206 - Welcome to TRAM LCT version 1.169.0
+2024-09-09 12:12:55.206 - INF: config version pge2023-ab
+2024-09-09 12:12:55.206 - user >
+2024-09-09 12:12:55.236 - INF: Wlaczanie modulu radiowego
+2024-09-09 12:12:55.236 - INF: Typ modulu: N27
+2024-09-09 12:12:55.297 - INF015: Serwer ICMP wlaczony
+2024-09-09 12:12:55.297 - INF008[1]: Kanal zostal poprawnie zainicjowany (na podst. uplink1)
+2024-09-09 12:12:55.297 - INFO :LWM2M: [lwm2m:lwm2m_task(226) ]:board_serial_get:32400003 0x431e5de4
+2024-09-09 12:12:55.297 - INFO :LWM2M: [lwm2m:lwm2m_task(230) ]:lwm2m_endpoint:urn:dev:ops:000FBF-TRAM-32400003
+2024-09-09 12:12:55.297 - INFO :LWM2M: [lwm2m:lwm2m_task(254) ]:#Breakpoint
+2024-09-09 12:12:55.297 - INFO :LWM2M: [lwm2m:lwm2m_task(267) ]:lwm2m_psk_id(8):32400003,
+2024-09-09 12:12:55.297 - INF: Firmware  : N27-Q04-STD-OP-008-T20240223
+2024-09-09 12:12:55.297 - INF007: Modul radiowy poprawnie wykryty i zainicjowany
+2024-09-09 12:12:55.297 - INF: IMEI1: 861603072426330
+2024-09-09 12:12:56.448 - INF006: PIN OK
+2024-09-09 12:12:56.448 - INF: IMSI: 260036449475372
+2024-09-09 12:12:56.448 - INF: SIMID: 8948032116494753724
+2024-09-09 12:12:56.448 - WRN012[auto]: Zmiana trybu radiowego na: auto
+2024-09-09 12:12:56.448 - INF: Sprawdzanie listy komorek
+2024-09-09 12:12:56.493 - user >
+2024-09-09 12:12:56.493 - user >
+2024-09-09 12:12:58.565 - INF: RAT: LTE.M1
+2024-09-09 12:12:58.626 - INF: Operator sieci: Orange
+2024-09-09 12:12:58.657 - WRN004[2024-09-09 10:13:00 nitz]: Na podst. nitz ustawiono lokalny RTC
+2024-09-09 12:12:58.961 - INF005: Gotowy do pracy
+2024-09-09 12:12:59.751 - login
+2024-09-09 12:12:59.751 - Password: INF013[79.162.233.243]: Urzadzenie otrzymalo adres IP: 79.162.233.243
+2024-09-09 12:12:59.751 - LCT: OK logged in
+2024-09-09 12:12:59.854 - gsm.rat
+2024-09-09 12:12:59.854 - RAT: LTE.M1
+2024-09-09 12:12:59.957 - print radio_mode
+2024-09-09 12:12:59.957 - LCT:  radio_mode=auto
+2024-09-09 12:12:59.957 - LCT:  radio_mode_auto_delay=0
+2024-09-09 12:12:59.957 - LCT:  radio_mode_pref=lte
+2024-09-09 12:12:59.957 - LCT:  radio_mode_rssi_low=-95
+2024-09-09 12:13:00.059 - print conf_bands
+2024-09-09 12:13:00.059 - LCT:  conf_bands=GSM900,GSM1800,LTE2100,LTE1800,LTE900,LTE800,LTE450B31
+2024-09-09 12:13:00.416 - set radio_mode lte
+2024-09-09 12:13:00.416 - LCT: OK
+2024-09-09 12:13:00.416 - LCT: OK
+2024-09-09 12:13:00.416 - debu
+2024-09-09 12:13:00.520 - g >save
+2024-09-09 12:13:00.520 - LWM2M: Start klienta host: 79.162.233.243 server: coaps://77.252.222.202:5884 ver: dtls(new)
+2024-09-09 12:13:00.520 - INFO :LWM2M: [lwm2m:get_security_object(583) ]:bsPskId:32400003 psk:0x431166d0 pskLen:16
+2024-09-09 12:13:00.520 - LCT: OK
+2024-09-09 12:13:00.520 - INF010[3]: Restart w ciagu 3 s
+2024-09-09 12:13:03.513 - ERR002: Blad aktywacji/utrata dostepu do APN
+2024-09-09 12:13:05.962 - SDK VER: N27-Q04-STD-SCOM-SDK-V2.1.6-T20240223
+2024-09-09 12:13:05.962 - MODEL ID: N27
+2024-09-09 12:13:05.962 - MANUFACTURE: NEOWAY
+2024-09-09 12:13:05.962 - BOARD SERIAL 32400003
+2024-09-09 12:13:05.962 - PCB SERIAL 2240B2240324100003
+2024-09-09 12:13:07.138 - MMMMMMMMMM
+2024-09-09 12:13:07.138 - MMMMMMMMMM      MMM
+2024-09-09 12:13:07.409 - MMMMMMMMMMM   MMM M
+2024-09-09 12:13:07.409 - MMMMMMMMMMMMMMM
+2024-09-09 12:13:07.409 - MMMMM
+2024-09-09 12:13:07.681 - MMMMMMMMM
+2024-09-09 12:13:07.681 - MMMMMMMMMMMM
+2024-09-09 12:13:07.681 - MMMMMMMMMMM
+2024-09-09 12:13:07.954 - MMMMMMMMMM     MMMMMMMMM        MMMMMMMM MMMMMMMMMMMMM
+2024-09-09 12:13:07.954 - MMMMMMMMMM     MMMMMMMMMMMM   MMMMMMMMMMM MMMMMMMMMMMMM
+2024-09-09 12:13:07.954 - MMMMMMMMMM       MMM
+2024-09-09 12:13:07.969 - M   MMMMM
+2024-09-09 12:13:08.226 - MMMMM            MMMM
+2024-09-09 12:13:08.226 - MMMMMMMMMM       MMMMM   MMMMM MMMMM            MMMMM
+2024-09-09 12:13:08.226 - MMMMMMMMMM         MMMMM   MMMMM MMMMM   MMMM     MMMMM
+2024-09-09 12:13:08.441 - MMMMMMMMMM          MMMMMMMMMMM   MMMMMMMMMMM     MMMMM
+2024-09-09 12:13:08.441 - MMMMMMMMMM          MMMMMMMMMM       MMMMMMMMM     MMMM
+2024-09-09 12:13:08.471 - Welcome to TRAM LCT version 1.169.0
+2024-09-09 12:13:08.471 - INF: config version pge2023-ab
+2024-09-09 12:13:08.471 - user >
+2024-09-09 12:13:08.561 - INF015: Serwer ICMP wlaczony
+2024-09-09 12:13:08.561 - INF008[1]: Kanal zostal poprawnie zainicjowany (na podst. uplink1)
+2024-09-09 12:13:08.561 - INF: Wlaczanie modulu radiowego
+2024-09-09 12:13:08.561 - INFO :LWM2M: [lwm2m:lwm2m_task(226) ]:board_serial_get:32400003 0x431e5de4
+2024-09-09 12:13:08.561 - INFO :LWM2M: [lwm2m:lwm2m_task(230) ]:lwm2m_endpoint:urn:dev:ops:000FBF-TRAM-32400003
+2024-09-09 12:13:08.561 - INFO :LWM2M: [lwm2m:lwm2m_task(254) ]:#Breakpoint
+2024-09-09 12:13:08.561 - INFO :LWM2M: [lwm2m:lwm2m_task(267) ]:lwm2m_psk_id(8):32400003,
+2024-09-09 12:13:08.561 - INF: Typ modulu: N27
+2024-09-09 12:13:08.561 - INF: Firmware  : N27-Q04-STD-OP-008-T20240223
+2024-09-09 12:13:08.561 - INF007: Modul radiowy poprawnie wykryty i zainicjowany
+2024-09-09 12:13:08.561 - INF: IMEI1: 861603072426330
+2024-09-09 12:13:09.665 - INF006: PIN OK
+2024-09-09 12:13:09.665 - INF: IMSI: 260036449475372
+2024-09-09 12:13:09.665 - INF: SIMID: 8948032116494753724
+2024-09-09 12:13:09.710 - WRN012[lte]: Zmiana trybu radiowego na: lte
+2024-09-09 12:13:09.756 - WRN: Zmiana pasm radiowych na: LTE2100,LTE1800,LTE900,LTE800,LTE450B31
+2024-09-09 12:13:09.756 - INF: Sprawdzanie listy komorek
+2024-09-09 12:13:09.756 - user >
+2024-09-09 12:13:09.756 - user >
+2024-09-09 12:13:11.842 - INF: RAT: LTE.M1
+2024-09-09 12:13:11.903 - INF: Operator sieci: Orange
+2024-09-09 12:13:11.903 - WRN004[2024-09-09 10:13:13 nitz]: Na podst. nitz ustawiono lokalny RTC
+2024-09-09 12:13:12.205 - INF005: Gotowy do pracy

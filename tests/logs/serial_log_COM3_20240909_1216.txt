@@ -1,0 +1,60 @@
+2024-09-09 12:16:51.065 - ver
+2024-09-09 12:16:51.065 - LCT: TRAM APATOR, version 1.169.0
+2024-09-09 12:16:51.065 - user >
+2024-09-09 12:16:51.174 - hwver
+2024-09-09 12:16:51.174 - LCT:  TRAM v7Q LTE cat. 1/LTE cat. M1/GSM
+2024-09-09 12:16:51.174 - user >
+2024-09-09 12:16:51.214 - user >
+2024-09-09 12:16:51.214 - user >
+2024-09-09 12:16:52.592 - INF006: PIN OK
+2024-09-09 12:16:52.638 - INF: IMEI2: 864566060006488
+2024-09-09 12:16:52.683 - INF: IMSI: 260036449475372
+2024-09-09 12:16:52.728 - INF: SIMID: 8948032116494753724
+2024-09-09 12:16:53.106 - WRN012[2g]: Zmiana trybu radiowego na: 2g
+2024-09-09 12:16:53.558 - INF: Sprawdzanie listy komorek
+2024-09-09 12:16:54.485 - login
+2024-09-09 12:16:54.485 - Password:
+2024-09-09 12:16:54.485 - LCT: OK logged in
+2024-09-09 12:16:54.589 - urc 1
+2024-09-09 12:16:54.589 - LCT: URC: 1
+2024-09-09 12:16:54.749 - urc 0
+2024-09-09 12:16:54.749 - LCT: URC: 0
+2024-09-09 12:16:54.898 - config.info
+2024-09-09 12:16:54.898 - config.backup=0
+2024-09-09 12:16:54.898 - config.changed=0
+2024-09-09 12:16:54.898 - config.progress=0
+2024-09-09 12:16:54.898 - config.factory.valid=0
+2024-09-09 12:16:54.898 - LCT: OK
+2024-09-09 12:16:55.004 - urc
+2024-09-09 12:16:55.004 - LCT: URC: 0
+2024-09-09 12:16:55.157 - board.serial.show
+2024-09-09 12:16:55.157 - BOARD SERIAL 32400003
+2024-09-09 12:16:55.293 - gsm.ver
+2024-09-09 12:16:55.293 - LCT: Typ modulu: N717 LTE cat. 1
+2024-09-09 12:16:55.293 - LCT: Firmware  : N717-A03-STD-BZ-014
+2024-09-09 12:16:55.396 - gsm.state
+2024-09-09 12:16:55.396 - Stan kanalu sterujacego: 4 [rejestrowanie w sieci]
+2024-09-09 12:16:55.499 - restart.disable 3600
+2024-09-09 12:16:55.499 - LCT: Blokada resetu wlaczona na 3600 s
+2024-09-09 12:16:59.895 - LWM2M: Start klienta host: 79.162.233.243 server: coaps://77.252.222.202:5884 ver: dtls(new)
+2024-09-09 12:16:59.895 - INFO :LWM2M: [lwm2m:get_security_object(583) ]:bsPskId:32400003 psk:0x4311b7ec pskLen:16
+2024-09-09 12:17:13.457 - INFO :LWM2M: [lwm2m:lwm2m_bootstr
+2024-09-09 12:17:13.487 - ap_register_status_event(169) ]: =====> status:0
+2024-09-09 12:17:13.487 - LWM2M: Udana rejestracja do bootstrap
+2024-09-09 12:17:15.755 - LWM2M: Udana r
+2024-09-09 12:17:15.786 - ejestracja do serwera
+2024-09-09 12:17:15.786 - INFO :LWM2M: [lwm2m:prv_handleRegistrationReply(698) ]:123 Registration successful
+2024-09-09 12:19:25.635 - gsm.aux at+cops?
+2024-09-09 12:19:25.635 - at+cops?
+2024-09-09 12:19:25.635 - +COPS: 0,0,"Orange",3
+2024-09-09 12:19:25.635 - OK
+2024-09-09 12:19:25.786 - gsm.aux ati
+2024-09-09 12:19:25.786 - ati
+2024-09-09 12:19:25.786 - NEOWAY
+2024-09-09 12:19:25.786 - N717
+2024-09-09 12:19:25.786 - V014
+2024-09-09 12:19:25.786 - OK
+2024-09-09 12:19:25.943 - gsm.aux at+creg?
+2024-09-09 12:19:25.943 - at+creg?
+2024-09-09 12:19:25.943 - +CREG: 2,1,"d2f7","00008b3b",3
+2024-09-09 12:19:25.943 - OK

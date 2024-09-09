@@ -1,6 +1,7 @@
+import re
+
 import pytest
 from common.Service import LWM2MService
-from tester_tram.managers.lwm2m_manager import LwM2MManager
 
 """
 In order to run these tests, you need to configure lwm2m server also on website for tests to fully operate
@@ -8,26 +9,42 @@ In order to run these tests, you need to configure lwm2m server also on website 
 
 
 @pytest.fixture(scope='module')
-def lwm2m_service():
-    service = LWM2MService(config_file='config.txt')
+def lwm2m_service(request):
+    config_file = request.config.getoption("--serial-config")
+    service = LWM2MService(config_file=config_file)
     yield service
-    service.close()
+    service.ser.close()
 
 
-@pytest.fixture(scope='module')
-def lwm2m_manager(lwm2m_service):
-    return LwM2MManager(communicator=lwm2m_service.communicator, service=lwm2m_service, config_file='config.txt')
-
-
-def test_lwm2m_server_connection(lwm2m_manager,lwm2m_service):
+def test_lwm2m_server_connection(lwm2m_service):
     lwm2m_service.login_admin()
     print("Testing LWM2M server connection...")
     expected_message = "LwM2M serwer status: polaczony"
-    lwm2m_manager.change_lwm2m_uri('coap://77.252.222.202:5683')
-    lwm2m_service.login_admin()
-    lwm2m_service.lwm2m_status()
-    result = lwm2m_manager.communicator.wait_for_message(expected_message, timeout=5)
 
+    # Change LwM2M URI
+    lwm2m_uri = 'coap://77.252.222.202:5683'
+    set_command = f'set lwm2m_uri {lwm2m_uri}\n'
+    lwm2m_service.write(set_command)
+    lwm2m_service.save()
+    lwm2m_service.reset()
+
+    # Wait for the module to be initialized
+    lwm2m_service.wait_for_message("Modul radiowy poprawnie wykryty i zainicjowany", timeout=60)
+    print(f"LwM2M URI changed to {lwm2m_uri}.")
+
+    # Verify the new URI
+    lwm2m_service.write('lwm2m.status\n')
+    lwm2m_output = lwm2m_service.read_console_output(line_count=5)
+
+    # Check if the URI is set correctly
+    lwm2m_pattern = rf'lwm2m_uri=\s?{re.escape(lwm2m_uri)}'
+    if re.search(lwm2m_pattern, lwm2m_output):
+        print(f"LwM2M URI is correctly set to '{lwm2m_uri}'.")
+    else:
+        print(f"LwM2M URI verification failed. Expected '{lwm2m_uri}'.")
+
+    # Check for the expected message
+    result = lwm2m_service.wait_for_message(expected_message, timeout=5)
     assert result, "Failed to connect to the LwM2M server"
     print("Test for LwM2M server connection completed successfully.")
 
