@@ -101,7 +101,6 @@ def test_gsm_band_n27(gsm_service):
             gsm_service.write(pin_check_command)
             pin_output = gsm_service.read_console_output(line_count=5)
             if re.search(pin_pattern, pin_output):
-                logging.info("The string contains 'pin=' followed by an optional space and 4 digits.")
                 return False
             else:
                 logging.info("The string does not contain 'pin=' followed by an optional space and 4 digits.")

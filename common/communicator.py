@@ -7,7 +7,7 @@ from datetime import datetime
 
 
 class SerialCommunicator:
-    def __init__(self, config_file='config_file.txt', log_dir='logs'):
+    def __init__(self, config_file: str = 'config_file.txt', log_dir: str = 'logs') -> None:
         self.config_file = config_file
         config = configparser.ConfigParser()
         config.read(config_file)
@@ -37,27 +37,27 @@ class SerialCommunicator:
         self.reading_thread = None
         self.stop_reading = threading.Event()
 
-    def get_pin(self):
+    def get_pin(self) -> str:
         """Fetches the PIN dynamically from the config file each time."""
         config = configparser.ConfigParser()
         config.read(self.config_file)
         return config.get('serial', 'pin')
 
-    def get_apn_name(self):
+    def get_apn_name(self) -> str:
         config = configparser.ConfigParser()
         config.read(self.config_file)
         return config.get('serial', 'apn_name')
 
-    def write(self, command):
+    def write(self, command: str) -> None:
         self.ser.write(command.encode())
         time.sleep(0.1)
 
-    def read(self):
+    def read(self) -> str:
         data = self.ser.read(self.ser.in_waiting or 1).decode('utf-8')
         self._log_data(data)
         return data
 
-    def _log_data(self, data):
+    def _log_data(self, data: str) -> None:
         """Log the data to a file with a timestamp, filtering out unwanted entries."""
         # Get the current timestamp with milliseconds
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]  # Slice to get milliseconds
@@ -69,18 +69,18 @@ class SerialCommunicator:
                 if entry and not self._is_unwanted_entry(entry):
                     f.write(f"{timestamp} - {entry}\n")
 
-    def _is_unwanted_entry(self, entry):
+    def _is_unwanted_entry(self, entry: str) -> bool:
         """Determine if the log entry should be ignored."""
         # Check if the entry is empty or starts with 'debug >'
         if entry == "" or entry.startswith("debug >"):
             return True
         return False
 
-    def send_command_and_wait(self, command, expected_message, timeout=30):
+    def send_command_and_wait(self, command: str, expected_message: str, timeout: int = 30) -> bool:
         self.write(command)
         return self.wait_for_message(expected_message, timeout)
 
-    def wait_for_message(self, expected_message, timeout=45):
+    def wait_for_message(self, expected_message: str, timeout: int = 45) -> bool:
         start_time = time.time()
         buffer = ""
 
@@ -95,7 +95,7 @@ class SerialCommunicator:
                 if expected_message in buffer:
                     return True
 
-    def wait_for_one_of_expected_messages(self, expected_messages, timeout=45):
+    def wait_for_one_of_expected_messages(self, expected_messages: list[str], timeout: int = 45) -> bool:
         start_time = time.time()
         buffer = ""
 
@@ -111,7 +111,7 @@ class SerialCommunicator:
                     if message in buffer:
                         return True
 
-    def wait_for_all_expected_messages(self, expected_messages, timeout=45):
+    def wait_for_all_expected_messages(self, expected_messages: list[str], timeout: int = 45) -> bool:
         """
         Waits for all the expected messages to be present in the buffer within the specified timeout.
 
@@ -139,14 +139,14 @@ class SerialCommunicator:
                         if received_messages_set == expected_messages_set:
                             return True
 
-    def is_debug_mode(self):
+    def is_debug_mode(self) -> bool:
         self.ser.write(b'\n\r')
         if not self.wait_for_message("debug >", 3):
             return False
         else:
             return True
 
-    def read_console_output(self, line_count=5, timeout=5):
+    def read_console_output(self, line_count: int = 5, timeout: int = 5) -> str:
         output = ""
         end_time = time.time() + timeout
 
@@ -161,7 +161,7 @@ class SerialCommunicator:
 
         return output
 
-    def wait_for_message_and_take_value(self, expected_message, timeout=30):
+    def wait_for_message_and_take_value(self, expected_message: str, timeout: int = 30) -> str:
         start_time = time.time()
         buffer = ""
 
@@ -175,17 +175,17 @@ class SerialCommunicator:
         return ""
 
     @staticmethod
-    def get_value_from_response(response, start_index):
+    def get_value_from_response(response: str, start_index: int) -> str:
         return response[start_index:].strip()
 
-    def check_lct(self):
+    def check_lct(self) -> bool:
         if not self.wait_for_message("LCT: OK"):
             if self.wait_for_message("LCT: Blad"):
                 return False
         else:
             return True
 
-    def read_configuration_from_file(self, file_path):
+    def read_configuration_from_file(self, file_path: str) -> dict[str, str]:
         """
         Reads and parses the configuration data from the specified file.
 
@@ -206,5 +206,3 @@ class SerialCommunicator:
                     config_data[key.strip()] = value.strip()
 
         return config_data
-
-

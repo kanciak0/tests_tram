@@ -20,7 +20,7 @@ def test_set_auto_radio_mode_n717(gsm_service):
     """
     Test to verify setting the radio mode to auto.
     """
-    logging.info("Starting test_set_auto_radio_mode_n27")
+    logging.info("Starting test_set_auto_radio_mode_n717")
     try:
         expected_messages = ["LTE", "EDGE", "GPRS"]
         auto_conf_bands = 'GSM900,GSM1800,LTE2100,LTE1800,LTE900,LTE800,LTE450B31'
