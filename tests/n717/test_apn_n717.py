@@ -13,6 +13,7 @@ def apn_service(request):
     """
     config_file = request.config.getoption("--serial-config")
     apn_service = APNService(config_file=config_file)
+    logging.info("---------------------------------SWITCHING ACTIVE RADIO TO N717---------------------------------")
     yield apn_service
 
 
