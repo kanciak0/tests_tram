@@ -1,0 +1,20 @@
+INFO     root:test_apn_n27.py:71 Configuration saved to backup file: backup_logs\backup_config.txt
+INFO     root:test_apn_n27.py:124 Starting test_set_apn_name
+INFO     root:test_apn_n27.py:137 APN name test passed successfully.
+INFO     root:test_apn_n27.py:151 Starting test_set_apn_login
+INFO     root:test_apn_n27.py:165 APN login test passed successfully.
+INFO     root:test_apn_n27.py:179 Starting test_set_apn_password
+INFO     root:test_apn_n27.py:193 APN password test passed successfully.
+INFO     root:test_apn_n27.py:207 Starting test_set_apn_auth
+INFO     root:test_apn_n27.py:223 APN authentication method test passed successfully.
+INFO     root:test_apn_n27.py:237 Starting test_set_apn_tries
+INFO     root:test_apn_n27.py:253 APN tries parameter test passed successfully.
+INFO     root:test_general_n27.py:26 Starting test_ver_n27
+INFO     root:test_general_n27.py:32 Version information test passed successfully.
+INFO     root:test_general_n27.py:45 Starting test_hwver_n27
+INFO     root:test_general_n27.py:51 Hardware version test passed successfully.
+INFO     root:test_general_n27.py:72 Starting test_urc_with_parameters_n27 with URC value 1
+INFO     root:test_general_n27.py:78 URC with parameters test passed successfully.
+INFO     root:test_general_n27.py:72 Starting test_urc_with_parameters_n27 with URC value 0
+INFO     root:test_general_n27.py:78 URC with parameters test passed successfully.
+INFO     root:test_general_n27.py:91 Starting test_config_info_n27
