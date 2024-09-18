@@ -1,11 +1,12 @@
 import os
 import logging
+import sys
 import time
 import subprocess
 import pytest
 from common.Service import GSMService
 
-
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 # Pytest fixture for GSM service
 @pytest.fixture(scope='module')
 def gsm_service(request):

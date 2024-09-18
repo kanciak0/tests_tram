@@ -1,3 +1,5 @@
+import os
+import sys
 import time
 
 import pytest
@@ -9,7 +11,7 @@ from common.Service import SerialService
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s.%(msecs)03d - %(name)s - %(levelname)s - %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
-
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 
 @pytest.fixture(scope='module')
 def serial_service(request):
