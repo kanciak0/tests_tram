@@ -18,11 +18,7 @@ ini
 
 [serial]
 port = COM1              # Set this to the actual device port (e.g., COM3 on Windows, /dev/ttyUSB0 on Linux)
-baudrate = 115200         # Adjust the baud rate if necessary
-timeout = 1               # Timeout for serial communication
-password = PgeDgt2023#    # Device password (modify if needed)
-pin = 1234                # Device pin
-apn_name = vpn.static.pl  # APN name for the connection
+
 Update the port field to match the actual serial port on your machine (e.g., COM1, COM3, or /dev/ttyUSB0 for Linux).
 Running Tests
 The tests are located in the /tests directory and are managed using pytest. A batch script is provided to easily execute tests with the correct configuration files.
