@@ -1,5 +1,13 @@
-[serial]
+[serialWindows]
 port = COM1
+baudrate = 115200
+timeout = 1
+password = PgeDgt2023#
+pin = 1234
+apn_name = vpn.static.pl
+
+[serialLinux]
+port = /dev/ttyUSB0
 baudrate = 115200
 timeout = 1
 password = PgeDgt2023#

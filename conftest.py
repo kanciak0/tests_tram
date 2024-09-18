@@ -17,7 +17,27 @@ def pytest_addoption(parser):
         help="Path to the serial configuration file",
     )
 
+failed_tests = []
 
+# Hook to collect failed tests
+def pytest_runtest_logreport(report):
+    if report.failed and report.when == 'call':
+        failed_tests.append(report)
+
+# Hook to rerun the failed tests after the test session ends
+@pytest.hookimpl(tryfirst=True)
+def pytest_sessionfinish(session, exitstatus):
+    if failed_tests:
+        print(f"\nRerunning {len(failed_tests)} failed tests...")
+        for test in failed_tests:
+            session.items = [item for item in session.items if item.nodeid == test.nodeid]
+            session.config.hook.pytest_runtestloop(session=session)
+
+# Fixture to reset the failed tests list
+@pytest.fixture(scope="session", autouse=True)
+def reset_failed_tests():
+    global failed_tests
+    failed_tests = []
 # import os
 # import subprocess
 
