@@ -1,4 +1,5 @@
 import configparser
+import platform
 import threading
 import time
 import serial
@@ -12,16 +13,24 @@ class SerialCommunicator:
         config = configparser.ConfigParser()
         config.read(config_file)
 
-        if not config.has_section('serial'):
-            raise configparser.NoSectionError('serial')
+        system = platform.system()
+        if system == "Windows":
+            config_section = 'serialWindows'
+        elif system == "Linux":
+            config_section = 'serialLinux'
+        else:
+            raise OSError(f"Unsupported platform: {system}")
 
-        self.port = config.get('serial', 'port')
-        self.baudrate = config.getint('serial', 'baudrate')
-        self.timeout = config.getfloat('serial', 'timeout')
-        self.password = config.get('serial', 'password')
+        if not config.has_section(config_section):
+            raise configparser.NoSectionError(config_section)
 
-        self.pin = config.get('serial', 'pin')
-        self.apn_name = config.get('serial', 'apn_name')
+        self.port = config.get(config_section, 'port')
+        self.baudrate = config.getint(config_section, 'baudrate')
+        self.timeout = config.getfloat(config_section, 'timeout')
+        self.password = config.get(config_section, 'password')
+
+        self.pin = config.get(config_section, 'pin')
+        self.apn_name = config.get(config_section, 'apn_name')
 
         self.ser = serial.Serial(self.port, baudrate=self.baudrate, timeout=self.timeout)
 
@@ -41,12 +50,12 @@ class SerialCommunicator:
         """Fetches the PIN dynamically from the config file each time."""
         config = configparser.ConfigParser()
         config.read(self.config_file)
-        return config.get('serial', 'pin')
+        return config.get('serialWindows' if platform.system() == 'Windows' else 'serialLinux', 'pin')
 
     def get_apn_name(self) -> str:
         config = configparser.ConfigParser()
         config.read(self.config_file)
-        return config.get('serial', 'apn_name')
+        return config.get('serialWindows' if platform.system() == 'Windows' else 'serialLinux', 'apn_name')
 
     def write(self, command: str) -> None:
         self.ser.write(command.encode())
@@ -69,7 +78,8 @@ class SerialCommunicator:
                 if entry and not self._is_unwanted_entry(entry):
                     f.write(f"{timestamp} - {entry}\n")
 
-    def _is_unwanted_entry(self, entry: str) -> bool:
+    @staticmethod
+    def _is_unwanted_entry(entry: str) -> bool:
         """Determine if the log entry should be ignored."""
         # Check if the entry is empty or starts with 'debug >'
         if entry == "" or entry.startswith("debug >"):
@@ -185,7 +195,8 @@ class SerialCommunicator:
         else:
             return True
 
-    def read_configuration_from_file(self, file_path: str) -> dict[str, str]:
+    @staticmethod
+    def read_configuration_from_file(file_path: str) -> dict[str, str]:
         """
         Reads and parses the configuration data from the specified file.
 

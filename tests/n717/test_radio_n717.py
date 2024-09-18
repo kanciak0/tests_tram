@@ -25,7 +25,7 @@ def test_set_auto_radio_mode_n717(gsm_service):
     logging.info("Starting test_set_auto_radio_mode_n717")
     try:
         expected_messages = ["LTE", "EDGE", "GPRS"]
-        auto_conf_bands = 'GSM900,GSM1800,LTE2100,LTE1800,LTE900,LTE800,LTE450B31'
+        auto_conf_bands = ["GSM900","GSM1800","LTE2100","LTE1800","LTE900","LTE800","LTE450B31"]
         auto_radio_mode = "auto"
 
         print("Testing setting radio mode to auto...")
@@ -75,7 +75,7 @@ def test_set_lte_radio_mode_n717(gsm_service):
     logging.info("Starting test_set_lte_radio_mode_n717")
     try:
         expected_messages = ["LTE", "EDGE", "GPRS"]
-        lte_conf_bands = 'LTE2100,LTE1800,LTE900,LTE800,LTE450B31'
+        lte_conf_bands = ["LTE2100","LTE1800","LTE900","LTE800","LTE450B31"]
         lte_radio_mode = "lte"
 
         print("Testing setting radio mode to LTE...")
@@ -125,7 +125,7 @@ def test_set_gsm_radio_mode_n717(gsm_service):
     logging.info("Starting test_set_gsm_radio_mode_n717")
     try:
         expected_messages = ["EDGE", "GPRS"]
-        gsm_conf_bands = 'GSM900,GSM1800'
+        gsm_conf_bands = ["GSM900","GSM1800"]
         gsm_radio_mode = "2g"
 
         print("Testing setting radio mode to GSM...")
