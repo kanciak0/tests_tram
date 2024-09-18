@@ -1,4 +1,5 @@
 import os
+import sys
 
 import pytest
 import logging
@@ -8,6 +9,7 @@ logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s.%(msecs)03d - %(name)s - %(levelname)s - %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S %F')
 
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 
 @pytest.fixture(scope='module')
 def apn_service(request):

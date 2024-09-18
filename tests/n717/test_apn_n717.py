@@ -1,11 +1,12 @@
 import logging
 import os
+import sys
 
 import pytest
 
 from common.Service import APNService
 
-
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 @pytest.fixture(scope='module')
 def apn_service(request):
     """
