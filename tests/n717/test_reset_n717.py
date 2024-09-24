@@ -27,7 +27,7 @@ def _generate_random_phone_number() -> str:
     return ''.join([str(random.randint(0, 9)) for _ in range(9)])
 
 @pytest.mark.parametrize("reset_number", [1, 2, 3])
-def test_set_reset_numbers_n27(serial_service, reset_number):
+def test_set_reset_numbers_n717(serial_service, reset_number):
     """
     Test to set random 9-digit phone numbers for reset numbers 1 to 3.
 
@@ -73,7 +73,7 @@ def test_set_reset_numbers_n27(serial_service, reset_number):
 
 
 @pytest.mark.parametrize("autoreset_param", ["autoreset1", "autoreset2"])
-def test_set_autoreset_times_n27(serial_service, autoreset_param):
+def test_set_autoreset_times_n717(serial_service, autoreset_param):
     """
     Test to set and verify autoreset1 and autoreset2 values.
 
@@ -111,7 +111,7 @@ def test_set_autoreset_times_n27(serial_service, autoreset_param):
         logging.error(f"An unexpected error occurred: {e}")
         raise
 
-def test_set_autoreset_random_window_n27(serial_service):
+def test_set_autoreset_random_window_n717(serial_service):
     """
     Test to set and verify autoreset_random_window value.
 
@@ -147,7 +147,7 @@ def test_set_autoreset_random_window_n27(serial_service):
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         raise
-def test_verify_autoreset_random_offset_n27(serial_service):
+def test_verify_autoreset_random_offset_n717(serial_service):
     """
     Test to verify autoreset_random_offset value after the autoreset_random_window is set.
 

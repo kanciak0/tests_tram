@@ -99,6 +99,54 @@ def test_ip_ping_n27(serial_service, address="8.8.8.8"):
         logging.error(f"An unexpected error occurred: {e}")
         raise
 
+
+
+@pytest.mark.parametrize("allowed_ip_param, ip_address, mask", [
+    ("allowed_ip1", "10.10.10.111", "255.255.255.0"),
+    ("allowed_ip2", "192.168.3.0", "255.255.255.0"),
+    ("allowed_ip3", "0.0.0.0", "0.0.0.0")
+])
+def test_set_allowed_ip(serial_service, allowed_ip_param, ip_address, mask):
+    """
+    Test to set and verify allowed_ip1, allowed_ip2, allowed_ip3 parameters.
+
+    :param serial_service: The serial_service instance used for interacting with the device.
+    :param allowed_ip_param: The allowed_ip parameter to set (allowed_ip1, allowed_ip2, or allowed_ip3).
+    :param ip_address: The IP address to set.
+    :param mask: The mask to set for the allowed IP.
+    """
+    logging.info(f"Starting test for {allowed_ip_param} with IP: {ip_address} and Mask: {mask}")
+
+    try:
+        serial_service.login_admin()
+
+        # Set the allowed IP with its mask
+        command = f"set {allowed_ip_param} {ip_address}/{mask}\n"
+        serial_service.write(command)
+
+        # Save and reset the device
+        serial_service.save()
+        serial_service.reset()
+        serial_service.wait_for_message("Modul radiowy poprawnie wykryty i zainicjowany")
+        serial_service.login_admin()
+
+        # Verify the allowed IP was set correctly
+        serial_service.write("print allowed_ip\n")
+        expected_message = f"{allowed_ip_param}={ip_address}/{mask}"
+        result = serial_service.wait_for_message(expected_message)
+
+        assert result, f"Expected message '{expected_message}' not received."
+        logging.info(f"Successfully verified {allowed_ip_param} is set to {ip_address}/{mask}")
+
+    except AssertionError as e:
+        logging.error(f"Test failed: {e}")
+        raise
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        raise
+
+
+
 @pytest.mark.skip(reason="Deprecated for this firmware version.")
 def test_server_ip_n27(serial_service, server_ip="192.168.1.1"):
     """
