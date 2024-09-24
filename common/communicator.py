@@ -40,8 +40,9 @@ class SerialCommunicator:
 
         # Create a timestamp for the log file name
         timestamp = datetime.now().strftime('%Y%m%d_%H%M')
+        sanitized_port=self.port.replace("/","_").replace(":","_")
         # Determine the log file based on the COM port from the config
-        self.log_file = os.path.join(self.log_dir, f'serial_log_{self.port.replace(":", "_")}_{timestamp}.txt')
+        self.log_file = os.path.join(self.log_dir, f'serial_log_{sanitized_port}_{timestamp}.txt')
 
         self.reading_thread = None
         self.stop_reading = threading.Event()

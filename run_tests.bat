@@ -1,7 +1,7 @@
 @echo off
 
 REM Navigate to the target directory
-cd /d "C:\Users\dgtla\PycharmProjects\Tram_testy\tram_testy\tests\"
+cd /d "C:\Users\dgtla\PycharmProjects\tests_tram\tests"
 
 REM Run pytest with the first config file and log everything
 start "" cmd /c pytest --serial-config=../common/config_file.txt --tb=short --log-cli-level=DEBUG --log-cli-date-format= --log-file=pytest_output_1.log

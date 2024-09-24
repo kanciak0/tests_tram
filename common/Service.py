@@ -110,6 +110,23 @@ class SerialService(SerialCommunicator):
             print(f"Invalid radio ID: {radio_id}. Valid IDs are 1 or 2.")
             return
 
+    def reset_num(self, number, phone_number):
+        """
+        Set the active reset number by specifying the number.
+        Reset number can be from 1 to 3. Phone number must be exactly 9 digits.
+        """
+        # Validate that the phone number contains exactly 9 digits
+        if not (phone_number.isdigit() and len(phone_number) == 9):
+            print(f"Invalid phone number: {phone_number}. It must contain exactly 9 digits.")
+            return
+
+        # Validate that the reset number is between 1 and 3
+        if number in [1, 2, 3]:
+            self.write(f'set reset_num{number} {phone_number}\n')
+        else:
+            print(f"Invalid reset number: {number}. Valid reset numbers are 1, 2, or 3.")
+            return
+
     def rtc_print(self):
         self.write("rtc.print\n")
 
