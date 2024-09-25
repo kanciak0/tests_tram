@@ -231,7 +231,7 @@ def test_set_pref_bands_to_2g_n27(gsm_service):
         gsm_service.write('print pref_bands\r\n')
 
         # Wait for the response and extract the relevant part
-        response = gsm_service.wait_for_message_and_take_value("LCT:", timeout=30)
+        response = gsm_service.wait_for_message_and_take_value("GSM", timeout=30)
         read_value = response.split(':')[1].strip().split('\r\n')[0] if response else None
 
         assert read_value == f"pref_bands={gsm_pref_bands}", \

@@ -1,54 +1,83 @@
-# import re
-#
-# import pytest
-# from common.Service import LWM2MService
-#
-# """
-# In order to run these tests, you need to configure lwm2m server also on website for tests to fully operate
-# """
-#
-#
-# @pytest.fixture(scope='module')
-# def lwm2m_service(request):
-#     config_file = request.config.getoption("--serial-config")
-#     service = LWM2MService(config_file=config_file)
-#     yield service
-#     service.ser.close()
-#
-#
-# def test_lwm2m_server_connection(lwm2m_service):
-#     lwm2m_service.login_admin()
-#     print("Testing LWM2M server connection...")
-#     expected_message = "LwM2M serwer status: polaczony"
-#
-#     # Change LwM2M URI
-#     lwm2m_uri = 'coap://77.252.222.202:5683'
-#     set_command = f'set lwm2m_uri {lwm2m_uri}\n'
-#     lwm2m_service.write(set_command)
-#     lwm2m_service.save()
-#     lwm2m_service.reset()
-#
-#     # Wait for the module to be initialized
-#     lwm2m_service.wait_for_message("Modul radiowy poprawnie wykryty i zainicjowany", timeout=60)
-#     print(f"LwM2M URI changed to {lwm2m_uri}.")
-#     lwm2m_service.login_admin()
-#     # Verify the new URI
-#     lwm2m_service.write('lwm2m.status\n')
-#     lwm2m_output = lwm2m_service.read_console_output(line_count=5)
-#
-#     # Check if the URI is set correctly
-#     lwm2m_pattern = rf'lwm2m_uri=\s?{re.escape(lwm2m_uri)}'
-#     if re.search(lwm2m_pattern, lwm2m_output):
-#         print(f"LwM2M URI is correctly set to '{lwm2m_uri}'.")
-#     else:
-#         print(f"LwM2M URI verification failed. Expected '{lwm2m_uri}'.")
-#
-#     # Check for the expected message
-#     result = lwm2m_service.wait_for_message(expected_message, timeout=5)
-#     assert result, "Failed to connect to the LwM2M server"
-#     print("Test for LwM2M server connection completed successfully.")
-#
-#
+import logging
+import re
+
+import pytest
+from common.Service import LWM2MService
+
+"""
+In order to run these tests, you need to configure lwm2m server also on website for tests to fully operate
+"""
+
+
+@pytest.fixture(scope='module')
+def lwm2m_service(request):
+    config_file = request.config.getoption("--serial-config")
+    service = LWM2MService(config_file=config_file)
+    yield service
+    service.ser.close()
+
+
+import logging
+
+
+def test_lwm2m_server_connection_coap(lwm2m_service):
+    """
+    Test to verify the LwM2M server connection using CoAP protocol.
+
+    :param lwm2m_service: The LwM2M service instance used for interacting with the device.
+    """
+    logging.info("Starting LwM2M server connection test...")
+    logging.critical("This is only a Coap test, device needs to be also tested for secured connection, which has to be done manually")
+    result = None  # Initialize 'result' to avoid referencing before assignment
+
+    try:
+        # Log in as admin
+        lwm2m_service.login_admin()
+
+        # Get LwM2M URI
+        lwm2m_uri = lwm2m_service.get_lwm2m_coap()
+
+        expected_message = f"LWM2M serwer status: polaczony {lwm2m_uri} (STATE_READY,0)"
+
+        # Set LwM2M URI and Bootstrap settings
+        lwm2m_service.set_lwm2m_uri(lwm2m_uri)
+        logging.info(f"LwM2M URI set to: {lwm2m_uri}")
+
+        lwm2m_service.set_lwm2m_bootstrap("0")
+        logging.info("LwM2M Bootstrap set to 0.")
+
+        lwm2m_service.save()
+
+        lwm2m_service.reset()
+
+        # Wait for module to initialize
+        lwm2m_service.wait_for_message("Modul radiowy poprawnie wykryty i zainicjowany", timeout=30)
+
+        lwm2m_service.wait_for_message("Udana rejestracja do serwera")
+
+        # Log in as admin again
+        lwm2m_service.login_admin()
+
+        # Verify LwM2M status
+        lwm2m_service.lwm2m_status()
+
+        # Check for the expected connection message
+        result = lwm2m_service.wait_for_message(expected_message, timeout=5)
+        assert result, "Failed to connect to the LwM2M server"
+
+        logging.info("Test for LwM2M server connection completed successfully.")
+
+    except AssertionError as e:
+        logging.error(f"Test failed: {e}")
+        raise
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        raise
+    finally:
+        # Handle the edge case: Log if the connection to LwM2M server failed
+        if result is None or not result:
+            logging.error("Failed to connect to the LwM2M server.")
+
 # def test_lwm2m_secure_server_connection(lwm2m_service):
 #     print("Testing secure LwM2M server connection...")
 #     lwm2m_service.login_admin()

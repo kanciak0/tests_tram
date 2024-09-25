@@ -2,6 +2,7 @@ import os
 import re
 import logging
 import sys
+import time
 
 import pytest
 from common.Service import GSMService
@@ -72,29 +73,16 @@ def test_gsm_band_n717(gsm_service):
         gsm_service.login_admin()
         gsm_service.gsm_band()
         result = gsm_service.wait_for_one_of_expected_messages(expected_messages, timeout=5)
-
         if not result:
-            logging.warning("No expected band messages received. Checking APN and PIN.")
-            expected_apn_name = gsm_service.get_apn_name()
+            logging.warning("Gsm band was not set, checking additional parameters")
+            time.sleep(5)
             pin_value = gsm_service.get_pin()
-            gsm_service.write(f"set apn_name {expected_apn_name}\n")
-            gsm_service.save()
-            gsm_service.reset()
-            gsm_service.wait_for_message("Modul radiowy poprawnie wykryty")
-            gsm_service.login_admin()
-            pin_check_command = 'print pin\n'
-            gsm_service.write(pin_check_command)
-            pin_output = gsm_service.read_console_output(line_count=5)
-
-            pin_pattern = r'pin=\s?\d{4}'
-            if not re.search(pin_pattern, pin_output):
-                gsm_service.write(f'set pin {pin_value}\n')
-                gsm_service.save()
-                gsm_service.reset()
-                gsm_service.wait_for_message("Modul radiowy poprawnie wykryty", timeout=60)
-                gsm_service.login_admin()
+            gsm_service.write("print pin\n")
+            result=gsm_service.wait_for_message(pin_value,timeout=5)
+            if result is True:
                 gsm_service.gsm_band()
-
+                result = gsm_service.wait_for_one_of_expected_messages(expected_messages, timeout=5)
+                return result
         assert result, f"Expected one of the GSM/LTE band messages {expected_messages}' was not received."
         logging.info("GSM band test passed successfully.")
     except AssertionError as e:

@@ -1,7 +1,17 @@
-[serial]
+[serialWindows]
 port = COM3
 baudrate = 115200
 timeout = 1
 password = PgeDgt2023#
 pin = 1234
 apn_name = vpn.static.pl
+lwm2m_uri = coap://77.252.222.209:5683
+
+[serialLinux]
+port = /dev/ttyUSB3
+baudrate = 115200
+timeout = 1
+password = PgeDgt2023#
+pin = 1234
+apn_name = vpn.static.pl
+lwm2m_uri = coap://77.252.222.209:5683

@@ -84,7 +84,7 @@ def test_ip_ping_n27(serial_service, address="8.8.8.8"):
         serial_service.write(f"ip.ping {address}\n")
 
         # Wait for the resolved address message
-        resolved_message = serial_service.wait_for_message(f"PING: resolved: {address} -> {address}")
+        resolved_message = serial_service.wait_for_message(f"icmp_seq=4")
         assert resolved_message, "Ping resolution message not received."
 
         # Wait for the "Done" message to confirm completion

@@ -58,6 +58,12 @@ class SerialCommunicator:
         config.read(self.config_file)
         return config.get('serialWindows' if platform.system() == 'Windows' else 'serialLinux', 'apn_name')
 
+
+    def get_lwm2m_coap(self) -> str:
+        config = configparser.ConfigParser()
+        config.read(self.config_file)
+        return config.get('serialWindows' if platform.system() == 'Windows' else 'serialLinux', 'lwm2m_uri')
+
     def write(self, command: str) -> None:
         self.ser.write(command.encode())
         time.sleep(0.1)
