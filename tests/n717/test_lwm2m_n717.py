@@ -27,7 +27,7 @@ def test_lwm2m_server_connection_coap(lwm2m_service):
     :param lwm2m_service: The LwM2M service instance used for interacting with the device.
     """
     logging.info("Starting LwM2M server connection test...")
-    logging.critical("This is only a Coap test, device needs to be also tested for secured connection, which has to be done manually")
+    logging.info("This is only a Coap test, device needs to be also tested for secured connection, which has to be done manually")
     result = None  # Initialize 'result' to avoid referencing before assignment
 
     try:

@@ -21,13 +21,6 @@ def apn_service(request):
     yield apn_service
     apn_service.ser.close()
 
-# @pytest.fixture(scope='module')
-# def gsm_service():
-#     gsm_service = GSMService(config_file='config.txt')
-#     yield gsm_service
-#     gsm_service.close()
-
-
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s.%(msecs)03d - %(name)s - %(levelname)s - %(message)s',
@@ -41,14 +34,31 @@ def backup_log_configuration(apn_service, request):
     """
     This fixture captures and backs up the configuration to a file at the beginning of the session.
     """
+    logging.info("""Copyright (c) 2024, Artur Madejski/DGT. ALL Rights reserved
+        MMMMMMMMMM
+     MMMMMMMMMM      MMM
+      MMMMMMMMMMM   MMM M
+        MMMMMMMMMMMMMMM
+         MMMMMMMMMMMMMM
+           MMMMMMMMMMMM
+            MMMMMMMMMMM
+            MMMMMMMMMM     MMMMMMMMM        MMMMMMMM MMMMMMMMMMMMM
+           MMMMMMMMMM     MMMMMMMMMMMM   MMMMMMMMMMM MMMMMMMMMMMMM
+         MMMMMMMMMM       MMMM   MMMMM  MMMMM            MMMM
+        MMMMMMMMMM       MMMMM   MMMMM MMMMM            MMMMM
+      MMMMMMMMMM         MMMMM   MMMMM MMMMM   MMMM     MMMMM
+     MMMMMMMMMM          MMMMMMMMMMM   MMMMMMMMMMM     MMMMM
+    MMMMMMMMMM          MMMMMMMMMM       MMMMMMMMM     MMMM
+    """)
     # Set up logging
     log_dir = 'backup_logs'
+    logging.info(f"Checking if log directory '{log_dir}' exists")
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
-
+    logging.info(f"Log directory '{log_dir}' created")
     # Create a backup file
     backup_file_path = os.path.join(log_dir, 'backup_config.txt')
-
+    logging.info(f"Backup file path set to '{backup_file_path}'")
     # Get configuration from the APN service
     try:
         # Log in as admin
@@ -68,7 +78,7 @@ def backup_log_configuration(apn_service, request):
             backup_file.write(
                 "-------------------------- Saved current configuration -----------------------------------\n")
             backup_file.write(processed_data)
-
+        logging.warning(f"Dont interrupt the tests while the script is going, configuration wont be saved then")
         # Log success to the console
         logging.info(f"Configuration saved to backup file: {backup_file_path}")
 
@@ -85,7 +95,6 @@ def process_configuration_data(data):
     processed_lines = []
 
     for line in lines:
-        # Remove leading and trailing whitespaces
         line = line.strip()
 
         # Remove 'LCT:' prefix
@@ -94,7 +103,6 @@ def process_configuration_data(data):
 
         # Add the processed line to the list
         processed_lines.append(line)
-
     return '\n'.join(processed_lines)
 
 
@@ -103,18 +111,23 @@ def radio_setup_n27(apn_service):
     """
     Fixture to ensure the radio module N27 is active and properly initialized.
     """
+    logging.info("Setting up radio module N27")
     apn_service.login_admin()
     apn_service.gsm_ver()
+    logging.info("Waiting for message 'N27' indicating the correct radio module is active")
     expected_radio = apn_service.wait_for_message("N27",timeout=5)
     if expected_radio is False:
+        logging.warning("N27 module not detected, switching radio")
         apn_service.set_active_radio(radio_id=1)
         apn_service.save()
         apn_service.reset()
+        logging.info("Waiting for radio module initialization message")
         apn_service.wait_for_message("Modul radiowy poprawnie wykryty i zainicjowany")
         apn_service.login_admin()
         apn_service.gsm_ver()
         expected_radio = apn_service.wait_for_message("N27")
         if expected_radio is False:
+            logging.critical("Radio module N27 was not activated properly.")
             pytest.fail("Nie przelaczono na poprawny modul radiowy")
     yield
 
@@ -126,8 +139,12 @@ def test_set_apn_name_n27(apn_service):
     logging.info("Starting test_set_apn_name")
     try:
         apn_service.login_admin()
+
         apn_name = apn_service.get_apn_name()
+        logging.debug(f"Retrieved current APN name: {apn_name}")
+
         apn_service.set_apn_name(apn_name)
+        logging.info(f"APN name set to: {apn_name}")
 
         # Verify the APN name was set correctly
         apn_service.print_apn()
@@ -156,7 +173,7 @@ def test_set_apn_login_n27(apn_service):
         apn_login = "ppp"
         assert len(apn_login) <= 32, "APN login exceeds maximum length"
         apn_service.set_apn_login(apn_login)
-
+        logging.debug(f"Setting APN login to: {apn_login}")
         # Verify the APN login was set correctly
         apn_service.print_apn()
         expected_message = f"apn_login={apn_login}"
