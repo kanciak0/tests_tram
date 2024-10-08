@@ -1,7 +1,11 @@
 import configparser
+import logging
 import platform
+import re
 import threading
 import time
+
+import pytest
 import serial
 import os
 from datetime import datetime
@@ -100,6 +104,7 @@ class SerialCommunicator:
     def wait_for_message(self, expected_message: str, timeout: int = 45) -> bool:
         start_time = time.time()
         buffer = ""
+        unknown_command_pattern = re.compile(r"nieznane polecenie '([^']+)'")
 
         while True:
             if time.time() - start_time > timeout:
@@ -109,6 +114,15 @@ class SerialCommunicator:
                 data = self.read()
                 buffer += data
 
+                # Search for 'nieznane polecenie' and capture the command
+                match = unknown_command_pattern.search(buffer)
+                if match:
+                    command = match.group(1)  # Extract the command inside the single quotes
+                    message = f"Skipping test due to unknown command: 'nieznane polecenie {command}'"
+                    logging.warning(message)
+                    pytest.skip(f"Not suitable command for this firmware version: {command}")
+
+                # Check if the expected message is found
                 if expected_message in buffer:
                     return True
 

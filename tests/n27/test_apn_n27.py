@@ -162,7 +162,6 @@ def test_set_apn_name_n27(apn_service):
         logging.error(f"An unexpected error occurred: {e}")
         raise  # Re-raise the exception to ensure pytest reports the failure
 
-
 def test_set_apn_login_n27(apn_service):
     """
     Test to verify setting and retrieving the APN login.
