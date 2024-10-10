@@ -1,0 +1,69 @@
+2024-10-10 10:55:12.245 - ver
+2024-10-10 10:55:12.245 - LCT: TRAM APATOR, version 1.176.0
+2024-10-10 10:55:12.350 - hwver
+2024-10-10 10:55:12.350 - LCT:  TRAM v7Q LTE cat. 1/LTE cat. M1/GSM
+2024-10-10 10:55:12.493 - urc 1
+2024-10-10 10:55:12.493 - LCT: URC: 1
+2024-10-10 10:55:12.643 - urc 0
+2024-10-10 10:55:12.643 - LCT: URC: 0
+2024-10-10 10:55:12.794 - config.info
+2024-10-10 10:55:12.794 - config.backup=0
+2024-10-10 10:55:12.794 - config.changed=1
+2024-10-10 10:55:12.794 - config.progress=0
+2024-10-10 10:55:12.794 - config.factory.valid=0
+2024-10-10 10:55:12.794 - LCT: OK
+2024-10-10 10:55:12.900 - urc
+2024-10-10 10:55:12.900 - LCT: URC: 0
+2024-10-10 10:55:13.048 - board.serial.show
+2024-10-10 10:55:13.048 - BOARD SERIAL 32400012
+2024-10-10 10:55:13.201 - gsm.ver
+2024-10-10 10:55:13.201 - LCT: Typ modulu: N27 LTE cat. M1
+2024-10-10 10:55:13.201 - LCT: Firmware  : DGT2-N27-Q04-STD-OP-001
+2024-10-10 10:55:13.352 - gsm.ids
+2024-10-10 10:55:13.352 - IMEI          : 861603072213613
+2024-10-10 10:55:13.352 - IMSI          : 260032660914028
+2024-10-10 10:55:13.352 - SIMID         : 8948031752609140281
+2024-10-10 10:55:13.352 - MSISDN        : 694498460
+2024-10-10 10:55:13.503 - gsm.band
+2024-10-10 10:55:13.503 - LCT:  LTE800
+2024-10-10 10:55:13.654 - gsm.rssi
+2024-10-10 10:55:13.654 - RSSI: -67 dBm
+2024-10-10 10:55:13.654 - BER: 99 (raw)
+2024-10-10 10:55:13.803 - gsm.rssiex
+2024-10-10 10:55:13.803 - Temp:    RSSI: -067 dBm, BER: 99 (raw)
+2024-10-10 10:55:13.803 - BCCH:    RSSI: -067 dBm, BER: 99 (raw)
+2024-10-10 10:55:13.803 - BCCHAvg: RSSI: -067 dBm, BER: 0 (raw)
+2024-10-10 10:55:13.954 - gsm.regstate
+2024-10-10 10:55:13.954 - Siec GSM: 1 [zarejestrowany w swojej sieci]
+2024-10-10 10:55:13.954 - Siec GPRS: 1 [zarejestrowany w swojej sieci]
+2024-10-10 10:55:13.954 - Operator: Orange
+2024-10-10 10:55:14.107 - gsm.state
+2024-10-10 10:55:14.107 - Stan kanalu sterujacego: 5 [gotowy do pracy]
+2024-10-10 10:55:14.260 - gsm.status
+2024-10-10 10:55:14.260 - LCT: Radio status: 1 [OK]
+2024-10-10 10:55:14.260 - LCT: Ostatni blad krytyczny: 0000
+2024-10-10 10:55:14.411 - gsm.cellinfo
+2024-10-10 10:55:14.411 - LAC   : 00000083
+2024-10-10 10:55:14.411 - CI    : 02241e10
+2024-10-10 10:55:14.411 - Act   : 8 (LTE.M1)
+2024-10-10 10:55:14.411 - RAC   : 00
+2024-10-10 10:55:14.411 - UARFCN: 6200
+2024-10-10 10:55:14.562 - LWM2M: Start klienta host: 79.162.230.42 server: coap://77.252.222.209:5683 ver: dtls(new)
+2024-10-10 10:55:14.562 - INFO :LWM2M: [lwm2m:get_security_object(583) ]:bsPskId:(null) psk:0 pskLen:0
+2024-10-10 10:55:14.562 - ip.iface
+2024-10-10 10:55:14.562 - LCT: Local IP: 79.162.230.42
+2024-10-10 10:55:14.562 - LCT: Remote IP: 79.162.230.41
+2024-10-10 10:55:14.562 - LCT: Netmask: 255.255.255.252
+2024-10-10 10:55:14.562 - LCT: DNS1: 194.204.159.1
+2024-10-10 10:55:14.562 - LCT: DNS2: 194.204.152.34
+2024-10-10 10:55:14.713 - ip.state
+2024-10-10 10:55:14.713 - LCT: Uplink task: task_Running
+2024-10-10 10:55:14.713 - LCT: WAN link: connected
+2024-10-10 10:55:14.717 - LWM2M: Udana rejestracja do serwera
+2024-10-10 10:55:14.717 - INFO :LWM2M: [lwm2m:prv_handleRegistrationReply(698) ]:123 Registration successful
+2024-10-10 10:55:14.866 - ip.ping 8.8.8.8
+2024-10-10 10:55:14.866 - PING: resolved: 8.8.8.8 -> 8.8.8.8
+2024-10-10 10:55:14.943 - PING: recv from 8.8.8.8: icmp_seq=0 time=102 ms ttl=6
+2024-10-10 10:55:16.045 - PING: recv from 8.8.8.8: icmp_seq=1 time=88 ms ttl=6
+2024-10-10 10:55:17.161 - PING: recv from 8.8.8.8: icmp_seq=2 time=101 ms ttl=6
+2024-10-10 10:55:18.277 - PING: recv from 8.8.8.8: icmp_seq=3 time=104 ms ttl=6

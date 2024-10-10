@@ -22,6 +22,7 @@ def serial_service(request):
     yield service
     service.ser.close()
 
+
 def _generate_random_phone_number() -> str:
     """Generate a random 9-digit phone number."""
     return ''.join([str(random.randint(0, 9)) for _ in range(9)])

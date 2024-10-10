@@ -1,0 +1,80 @@
+INFO     root:test_apn_n27.py:37 Copyright (c) 2024, Artur Madejski/DGT. ALL Rights reserved
+        MMMMMMMMMM
+     MMMMMMMMMM      MMM
+      MMMMMMMMMMM   MMM M
+        MMMMMMMMMMMMMMM
+         MMMMMMMMMMMMMM
+           MMMMMMMMMMMM
+            MMMMMMMMMMM
+            MMMMMMMMMM     MMMMMMMMM        MMMMMMMM MMMMMMMMMMMMM
+           MMMMMMMMMM     MMMMMMMMMMMM   MMMMMMMMMMM MMMMMMMMMMMMM
+         MMMMMMMMMM       MMMM   MMMMM  MMMMM            MMMM
+        MMMMMMMMMM       MMMMM   MMMMM MMMMM            MMMMM
+      MMMMMMMMMM         MMMMM   MMMMM MMMMM   MMMM     MMMMM
+     MMMMMMMMMM          MMMMMMMMMMM   MMMMMMMMMMM     MMMMM
+    MMMMMMMMMM          MMMMMMMMMM       MMMMMMMMM     MMMM
+    
+INFO     root:test_apn_n27.py:55 Checking if log directory 'backup_logs' exists
+INFO     root:test_apn_n27.py:58 Log directory 'backup_logs' created
+INFO     root:test_apn_n27.py:61 Backup file path set to 'backup_logs\backup_config.txt'
+WARNING  root:test_apn_n27.py:81 Dont interrupt the tests while the script is going, configuration wont be saved then
+INFO     root:test_apn_n27.py:83 Configuration saved to backup file: backup_logs\backup_config.txt
+INFO     root:test_apn_n27.py:114 Setting up radio module N27
+INFO     root:test_apn_n27.py:117 Waiting for message 'N27' indicating the correct radio module is active
+INFO     root:test_apn_n27.py:139 Starting test_set_apn_name
+DEBUG    root:test_apn_n27.py:144 Retrieved current APN name: vpn.static.pl
+INFO     root:test_apn_n27.py:147 APN name set to: vpn.static.pl
+INFO     root:test_apn_n27.py:156 APN name test passed successfully.
+INFO     root:test_apn_n27.py:169 Starting test_set_apn_login
+DEBUG    root:test_apn_n27.py:175 Setting APN login to: ppp
+INFO     root:test_apn_n27.py:183 APN login test passed successfully.
+INFO     root:test_apn_n27.py:197 Starting test_set_apn_password
+INFO     root:test_apn_n27.py:211 APN password test passed successfully.
+INFO     root:test_apn_n27.py:225 Starting test_set_apn_auth
+INFO     root:test_apn_n27.py:241 APN authentication method test passed successfully.
+INFO     root:test_apn_n27.py:255 Starting test_set_apn_tries
+INFO     root:test_apn_n27.py:271 APN tries parameter test passed successfully.
+INFO     root:test_general_n27.py:29 Starting test_ver_n27
+INFO     root:test_general_n27.py:35 Version information test passed successfully.
+INFO     root:test_general_n27.py:48 Starting test_hwver_n27
+INFO     root:test_general_n27.py:54 Hardware version test passed successfully.
+INFO     root:test_general_n27.py:75 Starting test_urc_with_parameters_n27 with URC value 1
+INFO     root:test_general_n27.py:81 URC with parameters test passed successfully.
+INFO     root:test_general_n27.py:75 Starting test_urc_with_parameters_n27 with URC value 0
+INFO     root:test_general_n27.py:81 URC with parameters test passed successfully.
+INFO     root:test_general_n27.py:94 Starting test_config_info_n27
+INFO     root:test_general_n27.py:101 Configuration info test passed successfully.
+INFO     root:test_general_n27.py:114 Starting test_urc_without_parameters_n27
+INFO     root:test_general_n27.py:120 URC without parameters test passed successfully.
+INFO     root:test_general_n27.py:132 Starting test_board_serial_show_n27
+INFO     root:test_general_n27.py:139 Board serial number test passed successfully.
+INFO     root:test_gsm_general_n27.py:30 Starting test_gsm_ver_n27
+INFO     root:test_gsm_general_n27.py:37 GSM version test passed successfully.
+INFO     root:test_gsm_general_n27.py:50 Starting test_gsm_ids_n27
+INFO     root:test_gsm_general_n27.py:57 GSM IDs test passed successfully.
+INFO     root:test_gsm_general_n27.py:70 Starting test_gsm_band_n27
+INFO     root:test_gsm_general_n27.py:118 GSM band test passed successfully.
+INFO     root:test_gsm_general_n27.py:131 Starting test_gsm_rssi_n27
+INFO     root:test_gsm_general_n27.py:138 GSM RSSI test passed successfully.
+INFO     root:test_gsm_general_n27.py:151 Starting test_gsm_rssiex_n27
+INFO     root:test_gsm_general_n27.py:158 GSM RSSIex test passed successfully.
+INFO     root:test_gsm_general_n27.py:171 Starting test_gsm_regstate_n27
+INFO     root:test_gsm_general_n27.py:178 GSM registration state test passed successfully.
+INFO     root:test_gsm_general_n27.py:191 Starting test_gsm_state_n27
+INFO     root:test_gsm_general_n27.py:198 GSM state test passed successfully.
+INFO     root:test_gsm_general_n27.py:211 Starting test_gsm_status_n27
+INFO     root:test_gsm_general_n27.py:218 GSM status test passed successfully.
+INFO     root:test_gsm_general_n27.py:231 Starting test_gsm_cellinfo_n27
+INFO     root:test_gsm_general_n27.py:238 GSM cell info test passed successfully.
+INFO     root:test_ip_n27.py:27 Starting test_ip_iface_n27
+INFO     root:test_ip_n27.py:46 IP interface test completed successfully.
+INFO     root:test_ip_n27.py:59 Starting test_ip_state_n27
+INFO     root:test_ip_n27.py:68 IP state test completed successfully.
+INFO     root:test_ip_n27.py:80 Starting test_ip_ping_n27 to 8.8.8.8
+ERROR    root:test_ip_n27.py:96 Test failed: Ping resolution message not received.
+assert False
+INFO     root:test_ip_n27.py:118 Starting test for allowed_ip1 with IP: 10.10.10.111 and Mask: 255.255.255.0
+INFO     root:test_ip_n27.py:139 Successfully verified allowed_ip1 is set to 10.10.10.111/255.255.255.0
+INFO     root:test_ip_n27.py:118 Starting test for allowed_ip2 with IP: 192.168.3.0 and Mask: 255.255.255.0
+INFO     root:test_ip_n27.py:139 Successfully verified allowed_ip2 is set to 192.168.3.0/255.255.255.0
+INFO     root:test_ip_n27.py:118 Starting test for allowed_ip3 with IP: 0.0.0.0 and Mask: 0.0.0.0

@@ -22,6 +22,26 @@ def serial_service(request):
     yield service
     service.ser.close()
 
+@pytest.fixture(scope="module", autouse=True)
+def radio_setup_n717(apn_service):
+    apn_service.login_admin()
+    apn_service.gsm_ver()
+    expected_radio = apn_service.wait_for_message("717",timeout=5)
+    if expected_radio is False:
+        apn_service.set_active_radio(radio_id=2)
+        apn_service.save()
+        apn_service.reset()
+        apn_service.wait_for_message("Modul radiowy poprawnie wykryty")
+        apn_service.login_admin()
+        apn_service.gsm_ver()
+        expected_radio = apn_service.wait_for_message("N717")
+        if expected_radio is False:
+            pytest.fail("Nie przelaczono na poprawny modul radiowy")
+    yield
+    apn_service.save()
+    apn_service.reset()
+    apn_service.wait_for_message("Modul radiowy poprawnie wykryty i zainicjowany")
+
 def _generate_random_phone_number() -> str:
     """Generate a random 9-digit phone number."""
     return ''.join([str(random.randint(0, 9)) for _ in range(9)])
