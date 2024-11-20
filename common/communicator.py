@@ -16,7 +16,6 @@ class SerialCommunicator:
         self.config_file = config_file
         config = configparser.ConfigParser()
         config.read(config_file)
-
         system = platform.system()
         if system == "Windows":
             config_section = 'serialWindows'
@@ -115,12 +114,12 @@ class SerialCommunicator:
                 buffer += data
 
                 # Search for 'nieznane polecenie' and capture the command
-                match = unknown_command_pattern.search(buffer)
-                if match:
-                    command = match.group(1)  # Extract the command inside the single quotes
-                    message = f"Skipping test due to unknown command: 'nieznane polecenie {command}'"
-                    logging.warning(message)
-                    pytest.skip(f"Not suitable command for this firmware version: {command}")
+                #match = unknown_command_pattern.search(buffer)
+                #if match:
+                    #command = match.group(1)  # Extract the command inside the single quotes
+                    #message = f"Skipping test due to unknown command: 'nieznane polecenie {command}'"
+                    #logging.warning(message)
+                    #pytest.skip(f"Not suitable command for this firmware version: {command}")
 
                 # Check if the expected message is found
                 if expected_message in buffer:

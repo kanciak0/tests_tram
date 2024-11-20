@@ -4,7 +4,7 @@ from tkinter import messagebox
 import subprocess
 import os
 import glob
-import time
+import serial.tools.list_ports  # Add this import for COM port detection
 
 class TestRunnerGUI:
     def __init__(self, root, test_directory, config_file):
@@ -18,27 +18,44 @@ class TestRunnerGUI:
 
         # Frame for test selection
         self.frame = tk.Frame(self.root)
-        self.frame.pack(pady=10)
+        self.frame.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 
-        self.test_listbox = tk.Listbox(self.frame, selectmode=tk.MULTIPLE)
-        self.test_listbox.pack(side=tk.LEFT, fill=tk.BOTH)
+        # Configure grid weights for resizing
+        self.root.grid_rowconfigure(0, weight=1)
+        self.root.grid_columnconfigure(0, weight=1)
 
-        self.load_tests_button = tk.Button(self.frame, text="Load Tests", command=self.load_tests)
-        self.load_tests_button.pack(side=tk.RIGHT)
+        self.test_listbox = tk.Listbox(self.frame, selectmode=tk.MULTIPLE, height=20, width=100)
+        self.test_listbox.pack(side=tk.LEFT, fill=tk.BOTH, padx=(0, 5))
 
-        # Label for config file path
-        self.config_file_label = tk.Label(self.root, text="Config File: " + os.path.basename(self.config_file))
-        self.config_file_label.pack(pady=5)
+        # COM Port Selection Dropdown Frame
+        self.com_port_frame = tk.Frame(self.root)
+        self.com_port_frame.grid(row=1, column=0, pady=5, sticky='nsew')
 
-        self.run_tests_button = tk.Button(self.root, text="Run Selected Tests", command=self.run_selected_tests)
-        self.run_tests_button.pack(pady=20)
+        # COM Port Selection Dropdown
+        self.selected_com_port = tk.StringVar(self.root)
+        self.com_ports = self.get_com_ports()
+        self.selected_com_port.set(self.com_ports[0])  # Default to the first available port
 
-        self.run_all_button = tk.Button(self.root, text="Run All Tests", command=self.run_all_tests)
-        self.run_all_button.pack(pady=20)
+        # COM Port Selection Dropdown (label and dropdown centered)
+        self.com_port_label = tk.Label(self.com_port_frame, text="Select COM Port:")
+        self.com_port_label.grid(row=0, column=0, pady=5)
+
+        self.com_port_menu = tk.OptionMenu(self.com_port_frame, self.selected_com_port, *self.com_ports, command=self.update_log_file_path)
+        self.com_port_menu.grid(row=0, column=1, padx=(5, 0))
+
+        # Buttons Frame
+        self.button_frame = tk.Frame(self.root)
+        self.button_frame.grid(row=2, column=0, pady=10, sticky='nsew')
+
+        self.run_tests_button = tk.Button(self.button_frame, text="Run Selected Tests", command=self.run_selected_tests, width=20)
+        self.run_tests_button.grid(row=0, column=0, padx=10)
+
+        self.run_all_button = tk.Button(self.button_frame, text="Run All Tests", command=self.run_all_tests, width=20)
+        self.run_all_button.grid(row=0, column=1, padx=10)
 
         # Text area for displaying results
-        self.result_text = tk.Text(self.root, height=15, width=80)
-        self.result_text.pack(pady=10)
+        self.result_text = tk.Text(self.root, height=30, width=80, bg="#f0f0f0", font=("Courier New", 10))
+        self.result_text.grid(row=3, column=0, pady=10)
         self.result_text.insert(tk.END, "Test results will be displayed here...\n")
         self.result_text.config(state=tk.DISABLED)  # Make it read-only initially
 
@@ -46,9 +63,19 @@ class TestRunnerGUI:
         self.load_tests()
         self.log_start_time = None
         # Start the log output monitoring
-        self.log_file_path = os.path.join("logs", "serial_log_COM1.txt")  # Path to your log file
+        self.log_file_path = os.path.join("logs", f"serial_log_{self.selected_com_port.get()}.txt")  # Path to your log file
         self.log_start_time = None  # To store when tests were started
         self.monitor_log()
+
+    def get_com_ports(self):
+        """Detect available COM ports."""
+        ports = list(serial.tools.list_ports.comports())
+        return [port.device for port in ports]
+
+    def update_log_file_path(self, com_port):
+        """Update the log file path based on selected COM port."""
+        self.log_file_path = os.path.join("logs", f"serial_log_{com_port}.txt")
+        print(f"Log file path updated to: {self.log_file_path}")  # Debug print statement
 
     def load_tests(self):
         """Load test files from the predefined test directory."""
@@ -140,11 +167,11 @@ class TestRunnerGUI:
 
 if __name__ == "__main__":
     # Set the relative path for the test directory
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Go up two levels to get to tests_tram
-    test_directory = os.path.join(project_root, "tests")  # Now point to the 'tests' directory
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    test_directory = os.path.join(project_root, "tests")
 
     # Set the fixed path for the config file
-    config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config_file.txt')  # Fixed path to config_file.txt in common
+    config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config_file.txt')
 
     root = tk.Tk()
     app = TestRunnerGUI(root, test_directory, config_file)
