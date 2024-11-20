@@ -22,6 +22,7 @@ def serial_service(request):
     yield service
     service.ser.close()
 
+
 def _generate_random_phone_number() -> str:
     """Generate a random 9-digit phone number."""
     return ''.join([str(random.randint(0, 9)) for _ in range(9)])
@@ -70,7 +71,6 @@ def test_set_reset_numbers_n27(serial_service, reset_number):
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         raise
-
 
 @pytest.mark.parametrize("autoreset_param", ["autoreset1", "autoreset2"])
 def test_set_autoreset_times_n27(serial_service, autoreset_param):
@@ -147,6 +147,7 @@ def test_set_autoreset_random_window_n27(serial_service):
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         raise
+
 def test_verify_autoreset_random_offset_n27(serial_service):
     """
     Test to verify autoreset_random_offset value after the autoreset_random_window is set.

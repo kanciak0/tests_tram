@@ -5,6 +5,7 @@ import sys
 import time
 
 import pytest
+
 from common.Service import GSMService
 
 logging.basicConfig(level=logging.INFO,
